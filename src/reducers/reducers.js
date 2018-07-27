@@ -7,12 +7,12 @@ const initialState = {
 
 export default function reducers(state = initialState, action = {}) {
   switch (action.type) {
-    case 'ADD_MEAL':
+    case 'ADD_DAILY_MEAL':
       return {
         ...state,
         count: state.count + 1
       };
-    case 'REM_MEAL':
+    case 'REM_DAILY_MEAL':
       return {
         ...state,
         count: state.count - 1
@@ -25,7 +25,7 @@ export default function reducers(state = initialState, action = {}) {
       return {
         ...state
       };
-    case 'SEE_FOOD':
+    case 'MOD_FOOD':
       return {
         ...state
       };

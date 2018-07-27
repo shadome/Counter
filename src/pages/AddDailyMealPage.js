@@ -11,7 +11,7 @@ import {
 } from '../components/react-native-material-ui';
 import TextField from '../components/react-native-material-textfield/adapted';
 
-class AddFood extends Component {
+class AddDailyMealPage extends Component {
   constructor(props) {
     super(props);
   }
@@ -37,4 +37,4 @@ class AddFood extends Component {
   }
 }
 
-export default AddFood;
+export default AddDailyMealPage;

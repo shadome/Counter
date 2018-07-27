@@ -18,7 +18,7 @@ import {
   ActionButton
 } from '../components/react-native-material-ui';
 
-class DailyFoodTable extends Component {
+class ListDailyMealsPage extends Component {
   constructor(props) {
     super(props);
   }
@@ -64,10 +64,10 @@ class DailyFoodTable extends Component {
               />}
           />
         </ScrollView>
-        <ActionButton onPress={() => this.props.navigation.navigate('add_food')}/>
+        <ActionButton onPress={() => this.props.navigation.navigate('add_daily_meal_page')}/>
       </View>
     );
   }
 }
 
-export default DailyFoodTable;
+export default ListDailyMealsPage;

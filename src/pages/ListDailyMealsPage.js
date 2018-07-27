@@ -53,6 +53,7 @@ class ListDailyMealsPage extends Component {
       <View style={{flex: 1}}>
         <Toolbar centerElement={('Daily meals')}/>
         <Text>{state.toto}</Text>
+        <Button onPress={() => actions.toto(state.toto + "to")}>Change toto</Button>
         <ScrollView style={{flex: 1}}>
           <FlatList
             data={data_sample}

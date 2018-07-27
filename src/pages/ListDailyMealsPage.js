@@ -17,36 +17,42 @@ import {
   Icon,
   ActionButton
 } from '../components/react-native-material-ui';
+import { bindActionCreators } from 'redux';
+import * as ListDailyMealsActions from "../actions/ListDailyMealsActions";
+import ListDailyMealsBusiness from "../business/ListDailyMealsBusiness";
 
 class ListDailyMealsPage extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    const data_sample = [
-      {
-        id: '0',
-        name: 'Banana',
-        quantity: 200,
-        unit: 'g',
-        energy: 77
-      }, {
-        id: '1',
-        name: 'Banana',
-        quantity: 200,
-        unit: 'g',
-        energy: 77
-      }, {
-        id: '2',
-        name: 'Banana',
-        quantity: 200,
-        unit: 'g',
-        energy: 77
-      }
-    ];
+    const { state, actions } = this.props;
+    const data_sample = state.dailyMealsHistory[ListDailyMealsBusiness.getIdFromDate(new Date())];
+    //[
+    //  {
+    //    id: '0',
+    //    name: 'Banana',
+    //    quantity: 200,
+    //    unit: 'g',
+    //    energy: 77
+    //  }, {
+    //    id: '1',
+    //    name: 'Banana',
+    //    quantity: 200,
+    //    unit: 'g',
+    //    energy: 77
+    //  }, {
+    //    id: '2',
+    //    name: 'Banana',
+    //    quantity: 200,
+    //    unit: 'g',
+    //    energy: 77
+    //  }
+    //];
     return (
       <View style={{flex: 1}}>
         <Toolbar centerElement={('Daily meals')}/>
+        <Text>{state.toto}</Text>
         <ScrollView style={{flex: 1}}>
           <FlatList
             data={data_sample}
@@ -70,4 +76,11 @@ class ListDailyMealsPage extends Component {
   }
 }
 
-export default ListDailyMealsPage;
+export default connect(
+  state => ({
+    state: state.listDailyMealsReducer
+  }),
+  (dispatch) => ({
+    actions: bindActionCreators(ListDailyMealsActions, dispatch)
+  })
+)(ListDailyMealsPage);

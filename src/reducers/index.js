@@ -1,3 +1,3 @@
-import reducers from './reducers';
+import listDailyMealsReducers from './ListDailyMealsReducers';
 
-export { reducers };
+export { listDailyMealsReducers };

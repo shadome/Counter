@@ -27,35 +27,14 @@ class ListDailyMealsPage extends Component {
     super(props);
   }
   render() {
-    const { test, actions } = this.props;
-    const data_sample = test.dailyMealsHistory[ListDailyMealsBusiness.getIdFromDate(new Date())];
-    //[
-    //  {
-    //    id: '0',
-    //    name: 'Banana',
-    //    quantity: 200,
-    //    unit: 'g',
-    //    energy: 77
-    //  }, {
-    //    id: '1',
-    //    name: 'Banana',
-    //    quantity: 200,
-    //    unit: 'g',
-    //    energy: 77
-    //  }, {
-    //    id: '2',
-    //    name: 'Banana',
-    //    quantity: 200,
-    //    unit: 'g',
-    //    energy: 77
-    //  }
-    //];
+    const { data, actions } = this.props;
+    const data_sample = data.dailyMealsHistory[ListDailyMealsBusiness.getIdFromDate(new Date())];
     return (
       <View style={{flex: 1}}>
         <Toolbar centerElement={('Daily meals')}/>
-        <Text>{test.toto}</Text>
+        <Text>{data.toto}</Text>
         <Text>{ListDailyMealsBusiness.getIdFromDate(new Date())}</Text>
-        <Button onPress={() => actions.toto(test.toto + "to")} text="Change toto"/>
+        <Button onPress={() => actions.toto(data.toto + "to")} text="Change toto"/>
         <ScrollView style={{flex: 1}}>
           <FlatList
             data={data_sample}
@@ -81,7 +60,7 @@ class ListDailyMealsPage extends Component {
 
 export default connect(
   state => ({
-    test: state.listDailyMealsReducers
+    data: state.listDailyMealsReducers
   }),
   (dispatch) => ({
     actions: bindActionCreators(ListDailyMealsActions, dispatch)

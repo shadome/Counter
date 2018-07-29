@@ -1,9 +1,10 @@
 import * as types from "../actions/ListDailyMealsActions";
 import ListDailyMealsBusiness from "../business/ListDailyMealsBusiness";
 
+const initialKey = ListDailyMealsBusiness.getIdFromDate(new Date());
 const initialState = {
-  dailyMealsHistory: new Hash(
-    ListDailyMealsBusiness.getIdFromDate(new Date()),
+  dailyMealsHistory: {
+    [ListDailyMealsBusiness.getIdFromDate(new Date())]:
     [
       {
         id: '0',
@@ -25,11 +26,11 @@ const initialState = {
         energy: 77
       }
     ]
-    ),
+  },
   toto:"toto",
 };
 
-export default function listDailyMealsReducer(state = initialState, action = {}) {
+export default function listDailyMealsReducers(state = initialState, action = {}) {
   switch (action.type) {
     case types.ADD:
       var _dailyMealsHistory = state.dailyMealsHistory;
@@ -46,7 +47,7 @@ export default function listDailyMealsReducer(state = initialState, action = {})
     case types.TOTO:
       return {
         ...state,
-        toto: action.toto
+        toto: action.str
       }
     default:
       return state;

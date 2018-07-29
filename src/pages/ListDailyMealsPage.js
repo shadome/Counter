@@ -20,14 +20,15 @@ import {
 import { bindActionCreators } from 'redux';
 import * as ListDailyMealsActions from "../actions/ListDailyMealsActions";
 import ListDailyMealsBusiness from "../business/ListDailyMealsBusiness";
+import { connect } from "react-redux";
 
 class ListDailyMealsPage extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    const { state, actions } = this.props;
-    const data_sample = state.dailyMealsHistory[ListDailyMealsBusiness.getIdFromDate(new Date())];
+    const { test, actions } = this.props;
+    const data_sample = test.dailyMealsHistory[ListDailyMealsBusiness.getIdFromDate(new Date())];
     //[
     //  {
     //    id: '0',
@@ -52,8 +53,9 @@ class ListDailyMealsPage extends Component {
     return (
       <View style={{flex: 1}}>
         <Toolbar centerElement={('Daily meals')}/>
-        <Text>{state.toto}</Text>
-        <Button onPress={() => actions.toto(state.toto + "to")}>Change toto</Button>
+        <Text>{test.toto}</Text>
+        <Text>{ListDailyMealsBusiness.getIdFromDate(new Date())}</Text>
+        <Button onPress={() => actions.toto(test.toto + "to")} text="Change toto"/>
         <ScrollView style={{flex: 1}}>
           <FlatList
             data={data_sample}
@@ -79,7 +81,7 @@ class ListDailyMealsPage extends Component {
 
 export default connect(
   state => ({
-    state: state.listDailyMealsReducer
+    test: state.listDailyMealsReducers
   }),
   (dispatch) => ({
     actions: bindActionCreators(ListDailyMealsActions, dispatch)

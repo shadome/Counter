@@ -1,11 +1,10 @@
-﻿import * as types from "../actions/AddDailyMealActions";
-import { InitialState } from "./InitialState";
+﻿import * as types from "../actions/AddDailyMealPageActions";
 
-// const initialState = {
-//   foodName:"toto",
-// };
+ const initialState = {
+   foodName:"toto",
+ };
 
-export default function addDailyMealReducers(state = InitialState, action = {}) {
+export default function addDailyMealPageReducers(state = initialState, action = {}) {
   switch (action.type) {
     case types.INPUT_FOOD_NAME:
       return {

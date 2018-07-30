@@ -1,4 +1,4 @@
-﻿class ListDailyMealsBusiness {
+﻿export default class DailyMealBusiness {
 
     static getIdFromDate(date) {
         if (date.getHours() < 5)
@@ -7,5 +7,3 @@
         return date.getTime();
     }
 }
-
-export default ListDailyMealsBusiness;

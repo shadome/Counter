@@ -18,23 +18,24 @@ import {
   ActionButton
 } from '../components/react-native-material-ui';
 import { bindActionCreators } from 'redux';
-import * as ListDailyMealsActions from "../actions/ListDailyMealsActions";
-import ListDailyMealsBusiness from "../business/ListDailyMealsBusiness";
+import * as DailyMealActions from "../actions/DailyMealActions";
+import DailyMealBusiness from "../business/DailyMealBusiness";
 import { connect } from "react-redux";
 
-class ListDailyMealsPage extends Component {
+class ListDailyMealPage extends Component {
+  let currentKey = DailyMealBusiness.getIdFromDate(new Date());
   constructor(props) {
     super(props);
   }
   render() {
-    const { data, actions } = this.props;
-    const data_sample = data.dailyMealsHistory[ListDailyMealsBusiness.getIdFromDate(new Date())];
+    const { dailyMealData, dailyMealActions } = this.props;
+    const key = this.currentKey;
+    this.currentKey = DailyMealBusiness.getIdFromDate(new Date());
+    const data_sample = dailyMealData.dailyMealHistory[this.key];
     return (
       <View style={{flex: 1}}>
         <Toolbar centerElement={('Daily meals')}/>
-        <Text>{data.toto}</Text>
-        <Text>{ListDailyMealsBusiness.getIdFromDate(new Date())}</Text>
-        <Button onPress={() => actions.toto(data.toto + "to")} text="Change toto"/>
+        <Text>{this.key}</Text>
         <ScrollView style={{flex: 1}}>
           <FlatList
             data={data_sample}
@@ -43,6 +44,7 @@ class ListDailyMealsPage extends Component {
               <ListItem 
                 divider  
                 dense
+                onLongClick={dailyMealActions.remove(this.key, index)}
                 centerElement={{
                   primaryText:item.name,
                   secondaryText:item.quantity + item.unit,
@@ -60,9 +62,11 @@ class ListDailyMealsPage extends Component {
 
 export default connect(
   state => ({
-    data: state.listDailyMealsReducers
+    dailyMealData: state.dailyMealReducers
+    //pageData: state.listDailyMealPageReducers,
   }),
   (dispatch) => ({
-    actions: bindActionCreators(ListDailyMealsActions, dispatch)
+    dailyMealActions: bindActionCreators(DailyMealActions, dispatch),
+    // pageActions: bindActionCreators(ListDailyMealPageActions, dispatch),
   })
-)(ListDailyMealsPage);
+)(ListDailyMealPage);

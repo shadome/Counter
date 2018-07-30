@@ -1,9 +1,7 @@
-﻿const prefix = "LIST_DAILY_MEALS";
+﻿const prefix = "DAILY_MEAL";
 
 export const ADD = "$prefix/ADD";
 export const REMOVE = "$prefix/REMOVE";
-
-export const TOTO = "$prefix/TOTO";
 
 export function add(key, meal) {
   return {
@@ -13,10 +11,5 @@ export function add(key, meal) {
 export function remove(key, index) {
   return {
     type: REMOVE, key, index
-  }
-}
-export function toto(str = "tata") {
-  return {
-    type: TOTO, str
   }
 }

@@ -1,13 +1,13 @@
 import {StackNavigator} from 'react-navigation';
 
-import ListDailyMealsPage from './pages/ListDailyMealsPage';
+import ListDailyMealPage from './pages/ListDailyMealPage';
 import AddDailyMealPage from './pages/AddDailyMealPage';
 
 const AppNavigator = StackNavigator({
-  list_daily_meals_page: ListDailyMealsPage,
+  list_daily_meal_page: ListDailyMealPage,
   add_daily_meal_page: AddDailyMealPage
 }, {
-  initialRouteName: 'list_daily_meals_page',
+  initialRouteName: 'list_daily_meal_page',
   headerMode: 'none',
 });
 

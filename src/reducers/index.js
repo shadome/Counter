@@ -1,4 +1,4 @@
-import listDailyMealsReducers from './ListDailyMealsReducers';
-import addDailyMealReducers from './AddDailyMealReducers';
+import dailyMealReducers from './dailyMealReducers';
+import addDailyMealPageReducers from './AddDailyMealPageReducers';
 
-export { listDailyMealsReducers, addDailyMealReducers };
+export { dailyMealReducers, addDailyMealPageReducers };

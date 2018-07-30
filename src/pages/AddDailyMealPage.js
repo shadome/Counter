@@ -12,14 +12,14 @@ import {
 import TextField from '../components/react-native-material-textfield/adapted';
 import { bindActionCreators } from 'redux';
 import { connect } from "react-redux";
-import * as AddDailyMealActions from "../actions/AddDailyMealActions";
+import * as AddDailyMealPageActions from "../actions/AddDailyMealPageActions";
 
 class AddDailyMealPage extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    const { data, actions } = this.props;
+    const { pageData, pageActions } = this.props;
     return (
       <View>
         <Toolbar 
@@ -29,11 +29,11 @@ class AddDailyMealPage extends Component {
               name='arrow-back'/>} 
           centerElement={('Add food')}/>
         <Card style={{paddingLeft:16, paddingRight:16, paddingBottom:8}}>
-          <TextField label='Name' onChangeText={(x) => actions.inputFoodName(x)}/>
-          <Text>{data.toto}</Text>
-          <Text>{data.foodName}</Text>
+          <TextField label='Name' onChangeText={(x) => pageActions.inputFoodName(x)}/>
+          <Text>{pageData.toto}</Text>
+          <Text>{pageData.foodName}</Text>
           <View style={{flexDirection:'row'}}>
-            <TextField onChangeText={(x) => actions.inputTest2(x)} containerStyle={{flex:1}} suffix='grams' label='Quantity'/>
+            <TextField suffix='grams' label='Quantity'/>
             <View style={{width:16}}/>
             <TextField containerStyle={{flex:1}} suffix='kcal/100g' label='Density'/>
           </View>
@@ -45,9 +45,11 @@ class AddDailyMealPage extends Component {
 
 export default connect(
   state => ({
-    data: state.addDailyMealReducers
+    pageData: state.addDailyMealPageReducers,
+    //dailyMealData: state.dailyMealReducers,
   }),
   (dispatch) => ({
-    actions: bindActionCreators(AddDailyMealActions, dispatch)
+    pageActions: bindActionCreators(AddDailyMealPageActions, dispatch),
+    //dailyMealActions: bindActionCreators(DailyMealActions, dispatch),
   })
 )(AddDailyMealPage);

@@ -23,9 +23,9 @@ import DailyMealBusiness from "../business/DailyMealBusiness";
 import { connect } from "react-redux";
 
 class ListDailyMealPage extends Component {
-  let currentKey = DailyMealBusiness.getIdFromDate(new Date());
   constructor(props) {
     super(props);
+    this.currentKey = DailyMealBusiness.getIdFromDate(new Date());
   }
   render() {
     const { dailyMealData, dailyMealActions } = this.props;

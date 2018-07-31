@@ -30,10 +30,8 @@ class AddDailyMealPage extends Component {
           centerElement={('Add food')}/>
         <Card style={{paddingLeft:16, paddingRight:16, paddingBottom:8}}>
           <TextField label='Name' onChangeText={(x) => pageActions.inputFoodName(x)}/>
-          <Text>{pageData.toto}</Text>
-          <Text>{pageData.foodName}</Text>
           <View style={{flexDirection:'row'}}>
-            <TextField suffix='grams' label='Quantity'/>
+            <TextField containerStyle={{flex:1}} suffix='grams' label='Quantity'/>
             <View style={{width:16}}/>
             <TextField containerStyle={{flex:1}} suffix='kcal/100g' label='Density'/>
           </View>

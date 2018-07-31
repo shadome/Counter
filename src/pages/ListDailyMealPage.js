@@ -1,3 +1,4 @@
+'use strict';
 import React, { Component } from 'react';
 import {
   NativeModules, 
@@ -31,11 +32,10 @@ class ListDailyMealPage extends Component {
     const { dailyMealData, dailyMealActions } = this.props;
     const key = this.currentKey;
     this.currentKey = DailyMealBusiness.getIdFromDate(new Date());
-    const data_sample = dailyMealData.dailyMealHistory[this.key];
+    const data_sample = dailyMealData.dailyMealHistory[key];
     return (
       <View style={{flex: 1}}>
         <Toolbar centerElement={('Daily meals')}/>
-        <Text>{this.key}</Text>
         <ScrollView style={{flex: 1}}>
           <FlatList
             data={data_sample}

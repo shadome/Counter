@@ -1,4 +1,5 @@
-﻿export default class DailyMealBusiness {
+﻿'use strict';
+export default class DailyMealBusiness {
 
     static getIdFromDate(date) {
         if (date.getHours() < 5)

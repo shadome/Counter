@@ -1,27 +1,11 @@
 'use strict';
-import React, { Component } from 'react';
-import {
-  NativeModules, 
-  StatusBar,
-  View, 
-  ScrollView, 
-  Text, 
-  FlatList
-} from 'react-native';
-import {
-  COLOR,
-  ThemeProvider,
-  ListItem,
-  Checkbox,
-  Button,
-  Toolbar,
-  Icon,
-  ActionButton
-} from '../components/react-native-material-ui';
-import { bindActionCreators } from 'redux';
+import React, {Component} from 'react';
+import {NativeModules, StatusBar, View, ScrollView, Text, FlatList} from 'react-native';
+import {COLOR, ThemeProvider, ListItem, Checkbox, Button, Toolbar, Icon, ActionButton} from '../components/react-native-material-ui';
+import {bindActionCreators} from 'redux';
 import * as DailyMealActions from "../actions/DailyMealActions";
 import DailyMealBusiness from "../business/DailyMealBusiness";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 
 class ListDailyMealPage extends Component {
   constructor(props) {
@@ -29,22 +13,22 @@ class ListDailyMealPage extends Component {
     this.currentKey = DailyMealBusiness.getIdFromDate(new Date());
   }
   render() {
-    const { dailyMealData, dailyMealActions } = this.props;
+    const {dailyMealData, dailyMealActions, navigation} = this.props;
     const key = this.currentKey;
     this.currentKey = DailyMealBusiness.getIdFromDate(new Date());
     const data_sample = dailyMealData.dailyMealHistory[key];
     return (
-      <View style={{flex: 1}}>
+      <View style={{flex:1}}>
         <Toolbar centerElement={('Daily meals')}/>
-        <ScrollView style={{flex: 1}}>
+        <ScrollView style={{flex:1}}>
           <FlatList
             data={data_sample}
-            keyExtractor={(item,index) => item.id}
+            keyExtractor={(item,index) => index}
             renderItem={({item,index}) => 
               <ListItem 
                 divider  
                 dense
-                onLongClick={dailyMealActions.remove(this.key, index)}
+                onLongClick={dailyMealActions.remove(key, index)}
                 centerElement={{
                   primaryText:item.name,
                   secondaryText:item.quantity + item.unit,
@@ -54,7 +38,7 @@ class ListDailyMealPage extends Component {
               />}
           />
         </ScrollView>
-        <ActionButton onPress={() => this.props.navigation.navigate('add_daily_meal_page')}/>
+        <ActionButton onPress={() => navigation.navigate('add_daily_meal_page')}/>
       </View>
     );
   }

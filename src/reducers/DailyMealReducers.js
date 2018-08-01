@@ -1,14 +1,14 @@
+'use strict';
 import * as types from "../actions/DailyMealActions";
 import DailyMealBusiness from "../business/DailyMealBusiness";
 
 const initialState = {
   dailyMealHistory: {
     [DailyMealBusiness.getIdFromDate(new Date())]: [
-      { id: '0', name: 'Banana', quantity: 200, unit: 'g', energy: 77}, 
-      { id: '1', name: 'Banana', quantity: 200, unit: 'g', energy: 77}, 
-      { id: '2', name: 'Banana', quantity: 200, unit: 'g', energy: 77}
+      {name: 'Banana', quantity: 200, unit: 'g', energy: 77}, 
+      {name: 'Banana', quantity: 200, unit: 'g', energy: 77}, 
+      {name: 'Banana', quantity: 200, unit: 'g', energy: 77}
     ]},
-  toto: "toto",
 };
 
 export default function dailyMealReducers(state = initialState, action = {}) {

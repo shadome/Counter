@@ -13,8 +13,8 @@ class AddDailyMealPage extends Component {
   constructor(props) {
     super(props);
   }
-  calculateEnergyPct() {
-    const {pageActions, pageData} = this.props;
+  calculateEnergyPct(props) {
+    const {pageActions, pageData} = props;
     const {fatPct, carbosPct, proteinPct, alcoholPct} = pageData;
     let total = 0;
     if (fatPct !== undefined)
@@ -28,8 +28,8 @@ class AddDailyMealPage extends Component {
     if (total > 0)
       pageActions.inputEnergyPct(total.toFixed(0));
   }
-  submit() {
-    const {pageData, pageActions, dailyMealActions, navigation,} = this.props;
+  submit(props) {
+    const {pageData, pageActions, dailyMealActions, navigation,} = props;
     dailyMealActions.add(DailyMealBusiness.getIdFromDate(new Date()), pageData);
     pageActions.reset();
     navigation.goBack();
@@ -38,44 +38,43 @@ class AddDailyMealPage extends Component {
     const {pageData, pageActions, dailyMealActions, navigation, theme,} = this.props;
     const percentageSuffix = pageData.unit + '/' + pageData.unitAmount + pageData.unit;
     const kcalSuffix = 'kcal/' + pageData.unitAmount + pageData.unit;
-    let toolbarLeftElement = <IconToggle onPress={() => navigation.goBack()} name='arrow-back' color={theme.palette.alternateTextColor}/>;
+    let toolbarLeftElement = <IconToggle onPress={navigation.goBack} name='arrow-back' color={theme.palette.alternateTextColor}/>;
+    let energyAccessory = () => <IconToggle name='sync' onPress={() => this.calculateEnergyPct(this.props)}/>;
     return (
       <ScrollView>
         <Toolbar centerElement={('Add food')}
           leftElement={toolbarLeftElement}
         />
-        <Card style={{paddingLeft:16, paddingRight:16, paddingBottom:8}}>
-          <Text style={theme.typography.h5}>Information</Text>
-          <TextField} label='Name' 
+        <Card style={{paddingLeft:16, paddingRight:16, paddingBottom:8, paddingTop:8}}>
+          <Text style={theme.typography.subheading}>Information</Text>
+          <TextField label='Name' 
             value={pageData.name} onChangeText={(x) => pageActions.inputName(x)}
           />
           <View style={{flex:1,flexDirection:'row'}}>
-            <View style={{flexDirection:'column',flex:1.5}}>
-              <TextField label='Quantity' suffix={pageData.unit} keyboardType='numeric' containerStyle={{flex:1}}
-                value={pageData.quantity} onChangeText={(x) => pageActions.inputQuantity(x)}
-              />
-              <TextField label='Energy' suffix={kcalSuffix} keyboardType='numeric' containerStyle={{flex:1}}
-                value={pageData.energyPct} onChangeText={(x) => pageActions.inputEnergyPct(x)}
-                renderAccessory={() => <IconToggle name='sync' onPress={this.calculateEnergyPct}/>}
-              />
-            </View>
+            <TextField style={{flex:1}} label='Quantity' suffix={pageData.unit} keyboardType='numeric' containerStyle={{flex:1}}
+              value={pageData.quantity} onChangeText={(x) => pageActions.inputQuantity(x)}
+            />
             <View style={{width:16}}/>
-            <View style={{flexDirection:'column',flex:1}}> 
-              <RadioButton value='g' label='Weight' // TODO use modal
-                onSelect={(x) => pageActions.selectUnit(x)}
-              />
-              <RadioButton value='ml' label='Volume'
-                onSelect={(x) => pageActions.selectUnit(x)}
-              />
-            </View>
+            <TextField label='Energy' suffix={kcalSuffix} keyboardType='numeric' containerStyle={{flex:2}}
+              value={pageData.energyPct} onChangeText={(x) => pageActions.inputEnergyPct(x)} renderAccessory={energyAccessory}
+            />
+          </View>
+          <View style={{height:16}}/>
+          <View style={{flex:1,flexDirection:'row'}}>
+            <RadioButton value='g' label='Weight' // TODO use modal
+              onSelect={(x) => pageActions.selectUnit(x)}
+            />
+            <RadioButton value='ml' label='Volume'
+              onSelect={(x) => pageActions.selectUnit(x)}
+            />
           </View>
         </Card>
-        <Card style={{paddingLeft:16, paddingRight:16, paddingBottom:8}}>
-          <Text style={theme.typography.h6}>Macronutrients</Text>
+        <Card style={{paddingLeft:16, paddingRight:16, paddingBottom:8, paddingTop:8}}>
+          <Text style={theme.typography.subheading}>Macronutrients</Text>
           <View style={{flexDirection:'row'}}>
-            <TextField label='Protein' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
-              value={pageData.proteinPct} onChangeText={(x) => pageActions.inputProteinPct(x)}
-            />
+              <TextField label='Protein' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
+                value={pageData.proteinPct} onChangeText={(x) => pageActions.inputProteinPct(x)}
+              />
             <View style={{width:16}}/>
             <TextField label='Carbohydrates' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
               value={pageData.carbosPct} onChangeText={(x) => pageActions.inputCarbosPct(x)}
@@ -91,7 +90,7 @@ class AddDailyMealPage extends Component {
             />
           </View>
         </Card>
-        <Button text='submit' onPress={this.submit}/>
+        <Button text='submit' onPress={() => this.submit(this.props)}/>
       </ScrollView>
     );
   }

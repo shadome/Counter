@@ -491,8 +491,8 @@ export default function getTheme(theme, ...more) {
               justifyContent: 'center',
             },
             icon: {
-              // color: palette.secondaryTextColor,
-              color: palette.alternateTextColor,
+              color: palette.secondaryTextColor,
+              // color: palette.alternateTextColor,
             },
           },
           mergedTheme.iconToggle,

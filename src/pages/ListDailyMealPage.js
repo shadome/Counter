@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 import {NativeModules, StatusBar, View, ScrollView, Text, FlatList} from 'react-native';
 import {COLOR, ThemeProvider, ListItem, Checkbox, Button, Toolbar, Icon, ActionButton} from '../components/react-native-material-ui';
 import {bindActionCreators} from 'redux';
-import * as DailyMealActions from "../actions/DailyMealActions";
-import DailyMealBusiness from "../business/DailyMealBusiness";
-import {connect} from "react-redux";
+import * as DailyMealActions from '../actions/DailyMealActions';
+import DailyMealBusiness from '../business/DailyMealBusiness';
+import {connect} from 'react-redux';
 
 class ListDailyMealPage extends Component {
   constructor(props) {
@@ -23,18 +23,18 @@ class ListDailyMealPage extends Component {
         <ScrollView style={{flex:1}}>
           <FlatList
             data={data_sample}
-            keyExtractor={(item,index) => index}
+            keyExtractor={(item,index) => index.toString()}
             renderItem={({item,index}) => 
               <ListItem 
                 divider  
                 dense
-                onLongClick={dailyMealActions.remove(key, index)}
+                onLongClick={() => dailyMealActions.remove(key, index)}
                 centerElement={{
                   primaryText:item.name,
                   secondaryText:item.quantity + item.unit,
                 }}
                 leftElement={<Icon name='alarm'/>}//donut-large
-                rightElement={<Text>{item.energy * 200 / 100}kcal</Text>}
+                rightElement={<Text>{item.energyPct * item.quantity / item.unitAmount}kcal</Text>}
               />}
           />
         </ScrollView>

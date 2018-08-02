@@ -33,5 +33,15 @@ export default {
     fontWeight: fontWeight.normal,
     fontSize: 14,
     lineHeight: 20,
+    },
+  h5: {
+    fontWeight: fontWeight.normal,
+    fontSize: 24,
+    lineHeight: 40,
+  },
+  h6: {
+    fontWeight: fontWeight.medium,
+    fontSize: 20,
+    lineHeight: 30,
   },
 };

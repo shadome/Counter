@@ -8,6 +8,7 @@ const initialState = {
 
 export default function addDailyMealPageReducers(state = initialState, action = {}) {
   switch (action.type) {
+    case types.RESET: return {initialState};
     case types.INPUT_NAME: return {...state, name:action.name};
     case types.SELECT_UNIT: return {...state, unit:action.unit};
     case types.INPUT_QUANTITY: return {...state, quantity:action.quantity};

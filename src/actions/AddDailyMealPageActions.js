@@ -1,6 +1,7 @@
 ﻿'use strict';
 const prefix = 'ADD_DAILY_MEAL_PAGE';
 
+export const RESET = '$prefix/RESET';
 export const INPUT_NAME = '$prefix/INPUT_NAME';
 export const SELECT_UNIT = '$prefix/SELECT_UNIT';
 export const INPUT_QUANTITY = '$prefix/INPUT_QUANTITY';
@@ -10,6 +11,7 @@ export const INPUT_CARBOS_PCT = '$prefix/INPUT_CARBOS_PCT';
 export const INPUT_PROTEIN_PCT = '$prefix/INPUT_PROTEIN_PCT';
 export const INPUT_ALCOHOL_PCT = '$prefix/INPUT_ALCOHOL_PCT';
 
+export function reset() { return {type:RESET}; }
 export function inputName(name) { return {type:INPUT_NAME, name}; }
 export function selectUnit(unit) { return {type:SELECT_UNIT, unit,}; }
 export function inputQuantity(quantity) { return {type:INPUT_QUANTITY, quantity}; }

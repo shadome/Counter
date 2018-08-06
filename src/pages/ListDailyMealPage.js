@@ -44,8 +44,8 @@ class ListDailyMealPage extends Component {
 
 export default connect(
   state => ({
-    dailyMealData: state.dailyMealReducers
-    //pageData: state.listDailyMealPageReducers,
+    dailyMealData: state.dailyMealReducer
+    //pageData: state.listDailyMealPageReducer,
   }),
   (dispatch) => ({
     dailyMealActions: bindActionCreators(DailyMealActions, dispatch),

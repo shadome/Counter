@@ -1,5 +1,5 @@
 'use strict';
-import dailyMealReducers from './DailyMealReducers';
-import addDailyMealPageReducers from './AddDailyMealPageReducers';
+import dailyMealReducer from './DailyMealReducer';
+import addDailyMealPageReducer from './AddDailyMealPageReducer';
 
-export {dailyMealReducers, addDailyMealPageReducers};
+export {dailyMealReducer, addDailyMealPageReducer};

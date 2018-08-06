@@ -9,7 +9,7 @@ const initialState = {
     ]},
 };
 
-export default function dailyMealReducers(state = initialState, action = {}) {
+export default function dailyMealReducer(state = initialState, action = {}) {
   switch (action.type) {
     case types.ADD:
       state.dailyMealHistory[action.key] = [...state.dailyMealHistory[action.key], action.meal];

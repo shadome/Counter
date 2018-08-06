@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 import DailyMealBusiness from '../business/DailyMealBusiness';
 import * as DailyMealActions from '../actions/DailyMealActions';
 import * as AddDailyMealPageActions from '../actions/AddDailyMealPageActions';
-import * as types from '../actions/AddDailyMealPageActions';
+import * as actions from '../actions/AddDailyMealPageActions';
 
 class AddDailyMealPage extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class AddDailyMealPage extends Component {
     if (ethanolPct !== undefined)
       total += 7 * ethanolPct;
     if (total > 0)
-      pageActions.input(types.INPUT_ENERGY_PCT, total.toFixed(0));
+      pageActions.trigger(actions.INPUT_ENERGY_PCT, total.toFixed(0));
       //pageActions.inputEnergyPct(total.toFixed(0));
   }
   submit(props) {
@@ -50,24 +50,24 @@ class AddDailyMealPage extends Component {
         <Card style={{paddingLeft:16, paddingRight:16, paddingBottom:8, paddingTop:8}}>
           <Text style={theme.typography.subheading}>Information</Text>
           <TextField label='Name' 
-            value={pageData.name} onChangeText={(x) => pageActions.trigger(types.INPUT_NAME, x)}
+            value={pageData.name} onChangeText={(x) => pageActions.trigger(actions.INPUT_NAME, x)}
           />
           <View style={{flex:1,flexDirection:'row'}}>
             <TextField style={{flex:1}} label='Quantity' suffix={pageData.unit} keyboardType='numeric' containerStyle={{flex:1}}
-              value={pageData.quantity} onChangeText={(x) => pageActions.trigger(types.INPUT_QUANTITY, x)}
+              value={pageData.quantity} onChangeText={(x) => pageActions.trigger(actions.INPUT_QUANTITY, x)}
             />
             <View style={{width:16}}/>
             <TextField label='Energy' suffix={kcalSuffix} keyboardType='numeric' containerStyle={{flex:2}}
-              value={pageData.energyPct} onChangeText={(x) => pageActions.trigger(types.INPUT_ENERGY_PCT, x)} renderAccessory={energyAccessory}
+              value={pageData.energyPct} onChangeText={(x) => pageActions.trigger(actions.INPUT_ENERGY_PCT, x)} renderAccessory={energyAccessory}
             />
           </View>
           <View style={{height:16}}/>
           <View style={{flex:1,flexDirection:'row'}}>
             <RadioButton value='g' label='Weight' // TODO use modal
-              onSelect={(x) => pageActions.trigger(types.SELECT_UNIT, x)}
+              onSelect={(x) => pageActions.trigger(actions.SELECT_UNIT, x)}
             />
             <RadioButton value='ml' label='Volume'
-              onSelect={(x) => pageActions.trigger(types.SELECT_UNIT, x)}
+              onSelect={(x) => pageActions.trigger(actions.SELECT_UNIT, x)}
             />
           </View>
         </Card>
@@ -75,20 +75,20 @@ class AddDailyMealPage extends Component {
           <Text style={theme.typography.subheading}>Macronutrients</Text>
           <View style={{flexDirection:'row'}}>
               <TextField label='Protein' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
-                value={pageData.proteinPct} onChangeText={(x) => pageActions.trigger(types.INPUT_PROTEIN_PCT, x)}
+                value={pageData.proteinPct} onChangeText={(x) => pageActions.trigger(actions.INPUT_PROTEIN_PCT, x)}
               />
             <View style={{width:16}}/>
             <TextField label='Carbohydrates' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
-              value={pageData.carbohydratesPct} onChangeText={(x) => pageActions.trigger(types.INPUT_CARBOHYDRATES_PCT, x)}
+              value={pageData.carbohydratesPct} onChangeText={(x) => pageActions.trigger(actions.INPUT_CARBOHYDRATES_PCT, x)}
             />
           </View>
           <View style={{flexDirection:'row'}}>
             <TextField label='Fat' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
-              value={pageData.fatPct} onChangeText={(x) => pageActions.trigger(types.INPUT_FAT_PCT, x)}
+              value={pageData.fatPct} onChangeText={(x) => pageActions.trigger(actions.INPUT_FAT_PCT, x)}
             />
             <View style={{width:16}}/>
             <TextField label='Ethanol' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
-              value={pageData.ethanolPct} onChangeText={(x) => pageActions.trigger(types.INPUT_ETHANOL_PCT, x)}
+              value={pageData.ethanolPct} onChangeText={(x) => pageActions.trigger(actions.INPUT_ETHANOL_PCT, x)}
             />
           </View>
         </Card>

@@ -15,6 +15,16 @@ export const INPUT_MONOUNSATURATED_FAT_PCT = '$prefix/INPUT_MONOUNSATURATED_FAT_
 export const INPUT_POLYUNSATURATED_FAT_PCT = '$prefix/INPUT_POLYUNSATURATED_FAT_PCT';
 
 //export const INPUT__PCT = '$prefix/INPUT__PCT';
+//export const INPUT__PCT = '$prefix/INPUT__PCT';
+//export const INPUT__PCT = '$prefix/INPUT__PCT';
+//export const INPUT__PCT = '$prefix/INPUT__PCT';
+//export const INPUT__PCT = '$prefix/INPUT__PCT';
+//export const INPUT__PCT = '$prefix/INPUT__PCT';
+//export const INPUT__PCT = '$prefix/INPUT__PCT';
+//export const INPUT__PCT = '$prefix/INPUT_CHLORINE_PCT';
+//export const INPUT_K_POTASSIUM_PCT = '$prefix/INPUT_K_POTASSIUM_PCT';
+
+// sel calcium cuivre fer iode magnésium manganèse phosphore potassium sélénium sodium zinc +fluoride
 
 //export const INPUT_K_PHYLLOQUINONE_MENAQUINONES_PCT = '$prefix/INPUT_K_PHYLLOQUINONE_MENAQUINONES_PCT';
 //export const INPUT_E_TOCOPHEROLS_TOCOTRIENOLS_PCT = '$prefix/INPUT_E_TOCOPHEROLS_TOCOTRIENOLS_PCT';
@@ -31,8 +41,6 @@ export const INPUT_POLYUNSATURATED_FAT_PCT = '$prefix/INPUT_POLYUNSATURATED_FAT_
 //export const INPUT_A_CAROTENOIDS_PCT = '$prefix/INPUT_A_CAROTENOIDS_PCT';
 
 // sucres fibres amidon polyols cendres cholestérol AGsatures AGpolyinsaturés(n9) AGmonoinsaturés(n6n3)
-
-// sel calcium cuivre fer iode magnésium manganèse phosphore potassium sélénium sodium zinc +fluoride
 
 // rétinol beta-carotene D E K1 K2 C B1(thiamine) B2(riboflavine) B3(PP,niacine) B5(acide_panthothénique) B6 +B7(biotin) B9(folates) B12
 

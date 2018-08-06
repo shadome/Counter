@@ -47,7 +47,7 @@ export const INPUT_POLYUNSATURATED_FAT_PCT = '$prefix/INPUT_POLYUNSATURATED_FAT_
 
 
 //export function reset() { return {type:RESET}; }
-export function trigger(type, ...x) { return {type, ...x};}
+export function trigger(type, ...x) { return {type, x};}
 
 //export function inputName(x) { return {type:INPUT_NAME, x}; }
 //export function selectUnit(x) { return {type:SELECT_UNIT, x,}; }

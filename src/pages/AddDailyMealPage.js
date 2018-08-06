@@ -33,7 +33,7 @@ class AddDailyMealPage extends Component {
   submit(props) {
     const {pageData, pageActions, dailyMealActions, navigation,} = props;
     dailyMealActions.add(DailyMealBusiness.getIdFromDate(new Date()), pageData);
-    pageActions.reset();
+    //pageActions.trigger(actions.RESET);
     navigation.goBack();
   }
   render() {

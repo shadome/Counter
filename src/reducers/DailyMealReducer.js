@@ -15,7 +15,7 @@ const initialState = {
 export default function dailyMealReducer(state = initialState, action = {}) {
   switch (action.type) {
     case types.ADD:
-      state.dailyMealHistory[action.key] = state.dailyMealHistory[action.key] ? [...state.dailyMealHistory[action.key], action.meal] : [action.meal]
+      state.dailyMealHistory[action.key] = state.dailyMealHistory[action.key] ? [...state.dailyMealHistory[action.key].splice(0), action.meal] : [action.meal]
       return {
         ...state,
         dailyMealHistory: state.dailyMealHistory

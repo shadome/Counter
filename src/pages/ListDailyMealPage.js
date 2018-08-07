@@ -36,6 +36,7 @@ class ListDailyMealPage extends Component {
             data={list}
             keyExtractor={(item,index) => index.toString()}
             renderItem={({item, index}) => listItem(item, index)}
+            ListFooterElement={<ListItem divider dense/>}
           />
         </ScrollView>
         <ActionButton onPress={() => navigation.navigate('add_daily_meal_page')}/>

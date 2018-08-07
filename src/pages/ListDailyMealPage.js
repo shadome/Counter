@@ -30,7 +30,6 @@ class ListDailyMealPage extends Component {
     return (
       <View style={{flex:1}}>
         <Toolbar centerElement={'Daily meals [' + list.reduce((x, y) => x + parseInt(energy(y)), 0) + ']'}/>
-        <Text>{list.toString()}</Text>
         <ScrollView style={{flex:1}}>
           <FlatList
             data={list}

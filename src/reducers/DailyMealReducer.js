@@ -14,19 +14,32 @@ const initialState = {
 
 export default function dailyMealReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case types.ADD:
-      state.dailyMealHistory[action.key] = state.dailyMealHistory[action.key] ? [...state.dailyMealHistory[action.key].splice(0), action.meal] : [action.meal]
+    case types.ADD: // x[0]:key x[1]:meal_element
+      state.dailyMealHistory[action.x[0]] = state.dailyMealHistory[action.x[0]] ? [...state.dailyMealHistory[action.x[0]].splice(0), action.x[1]] : [action.x[1]]
       return {
         ...state,
         dailyMealHistory: state.dailyMealHistory
       };
-    case types.REMOVE:
-      state.dailyMealHistory[action.key] = state.dailyMealHistory[action.key].splice(0)
-      state.dailyMealHistory[action.key].splice(action.index, 1)
+    case types.REMOVE: // x[0]:key x[1]:index
+      state.dailyMealHistory[action.x[0]] = state.dailyMealHistory[action.x[0]].splice(0)
+      state.dailyMealHistory[action.x[0]].splice(action.x[1], 1)
       return {
         ...state,
         dailyMealHistory: state.dailyMealHistory,
       }
+    //case types.ADD:
+    //  state.dailyMealHistory[action.key] = state.dailyMealHistory[action.key] ? [...state.dailyMealHistory[action.key], action.meal] : [action.meal]
+    //  return {
+    //    ...state,
+    //    dailyMealHistory: state.dailyMealHistory
+    //  };
+    //case types.REMOVE:
+    //  state.dailyMealHistory[action.key] = state.dailyMealHistory[action.key].splice(0)
+    //  state.dailyMealHistory[action.key].splice(action.index, 1)
+    //  return {
+    //    ...state,
+    //    dailyMealHistory: state.dailyMealHistory,
+    //  }
     default:
       return state
   }

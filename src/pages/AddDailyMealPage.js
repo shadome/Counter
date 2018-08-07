@@ -32,12 +32,13 @@ class AddDailyMealPage extends Component {
   }
   submit(props) {
     const {pageData, pageActions, dailyMealActions, navigation,} = props;
-    dailyMealActions.add(DailyMealBusiness.getIdFromDate(new Date()), pageData);
+    dailyMealActions.trigger(dailyMealActions.ADD, DailyMealBusiness.getIdFromDate(new Date()), pageData);
+    //dailyMealActions.add(DailyMealBusiness.getIdFromDate(new Date()), pageData);
     //pageActions.trigger(actions.RESET);
     navigation.goBack();
   }
   render() {
-    const {pageData, pageActions, dailyMealActions, navigation, theme,} = this.props;
+    const {pageData, pageActions, navigation, theme,} = this.props;
     const percentageSuffix = pageData.unit + '/' + pageData.unitAmount + pageData.unit;
     const kcalSuffix = 'kcal/' + pageData.unitAmount + pageData.unit;
     let toolbarLeftElement = <IconToggle onPress={navigation.goBack} name='arrow-back' color={theme.palette.alternateTextColor}/>;

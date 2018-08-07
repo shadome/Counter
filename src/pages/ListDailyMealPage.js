@@ -22,7 +22,8 @@ class ListDailyMealPage extends Component {
     const listItemRightElement = (item) => <Text>{energy(item)} kcal</Text>;
     const listItem = (item, index) =>
       <ListItem divider dense 
-        onLongPress={() => dailyMealActions.remove(key, index)}
+        //onLongPress={() => dailyMealActions.remove(key, index)}
+        onLongPress={() => dailyMealActions.trigger(dailyMealActions.REMOVE, key, index)}
         centerElement={{primaryText:item.name, secondaryText:item.quantity + item.unit,}}
         leftElement={listItemLeftElement} rightElement={listItemRightElement(item)} 
       />;

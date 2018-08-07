@@ -3,7 +3,8 @@ import * as types from "../actions/DailyMealActions";
 import DailyMealBusiness from "../business/DailyMealBusiness";
 
 const initialState = {
-  dailyMealHistory: {}
+  dailyMealHistory: {},
+  toto:'toto',
   // toto:DailyMealBusiness.getIdFromDate(new Date()),
   // dailyMealHistory: {[DailyMealBusiness.getIdFromDate(new Date())]: [
   //     {name: 'Banana', quantity: 200, unit: 'g', energyPct: 77, unitAmount:100}, 
@@ -18,6 +19,7 @@ export default function dailyMealReducer(state = initialState, action = {}) {
       state.dailyMealHistory[action.x[0]] = state.dailyMealHistory[action.x[0]] ? [...state.dailyMealHistory[action.x[0]].splice(0), action.x[1]] : [action.x[1]]
       return {
         ...state,
+        toto: action.x[1].name,
         dailyMealHistory: state.dailyMealHistory
       };
     case types.REMOVE: // x[0]:key x[1]:index

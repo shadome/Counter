@@ -24,7 +24,8 @@ const persistConfig = {
   stateReconciler: autoMergeLevel2
 };
 const pReducer = persistReducer(persistConfig, reducer);
-const store = createStoreWithMiddleware(pReducer); // const store = createStore(reducer, undefined, autoRehydrate())
+const store = createStoreWithMiddleware(pReducer); 
+// const store = createStore(reducer, undefined, autoRehydrate())
 persistStore(store);
 
 class Home extends Component {

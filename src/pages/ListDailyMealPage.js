@@ -1,7 +1,7 @@
 'use strict';
 import React, {Component} from 'react';
 import {NativeModules, StatusBar, View, ScrollView, Text, FlatList} from 'react-native';
-import {COLOR, ThemeProvider, ListItem, Checkbox, Button, Toolbar, Icon, ActionButton, withTheme} from '../components/react-native-material-ui';
+import {COLOR, ThemeProvider, ListItem, Checkbox, Button, Toolbar, Icon, ActionButton, BottomNavigation, withTheme} from '../components/react-native-material-ui';
 import {bindActionCreators} from 'redux';
 import * as DailyMealActions from '../actions/DailyMealActions';
 import DailyMealBusiness from '../business/DailyMealBusiness';
@@ -40,6 +40,26 @@ class ListDailyMealPage extends Component {
           />
         </ScrollView>
         <ActionButton onPress={() => navigation.navigate('add_daily_meal_page')}/>
+        <BottomNavigation 
+          active={'0'}
+          style={{ container: { position: 'absolute', bottom: 0, left: 0, right: 0 } }}
+        >
+          <BottomNavigation.Action key='0' label="Today" onPress={}
+            icon={<Icon name="event_available" />}
+          />
+          <BottomNavigation.Action key='1' label="Add food" icon="create"
+            onPress={() => navigation.navigate('add_daily_meal_page')}
+          />
+          <BottomNavigation.Action key='2' icon="event_note" label="Calendar"
+            onPress={}
+          />
+          //<BottomNavigation.Action
+          //  key="settings"
+          //  icon="settings"
+          //  label="Settings"
+          //  onPress={}
+          ///>
+        </BottomNavigation>
       </View>
     );
   }

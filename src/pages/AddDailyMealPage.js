@@ -1,7 +1,7 @@
 'use strict';
 import React, {Component} from 'react';
 import {View, Text, ScrollView, Modal,} from 'react-native';
-import {Toolbar, Icon, IconToggle, Card, RadioButton, Button, withTheme,} from '../components/react-native-material-ui';
+import {Toolbar, Icon, IconToggle, Card, RadioButton, Button, Dialog, withTheme,} from '../components/react-native-material-ui';
 import TextField from '../components/react-native-material-textfield/adapted';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';

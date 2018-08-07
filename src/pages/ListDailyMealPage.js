@@ -12,6 +12,7 @@ class ListDailyMealPage extends Component {
     super(props);
     this.currentKey = DailyMealBusiness.getIdFromDate(new Date());
   }
+  //https://github.com/wix/react-native-calendars
   render() {
     const {dailyMealData, dailyMealActions, navigation, theme,} = this.props;
     const key = this.currentKey;

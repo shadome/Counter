@@ -3,6 +3,7 @@ const prefix = 'ADD_DAILY_MEAL_PAGE';
 
 export const RESET = '$prefix/RESET';
 export const INPUT_NAME = '$prefix/INPUT_NAME';
+export const SELECT_UNIT_VISIBLE_TOGGLE = '$prefix/SELECT_UNIT_VISIBLE_TOGGLE'
 export const SELECT_UNIT = '$prefix/SELECT_UNIT';
 export const INPUT_QUANTITY = '$prefix/INPUT_QUANTITY';
 export const INPUT_ENERGY_PCT = '$prefix/INPUT_ENERGY_PCT';
@@ -13,6 +14,8 @@ export const INPUT_ETHANOL_PCT = '$prefix/INPUT_ETHANOL_PCT';
 export const INPUT_SATURATED_FAT_PCT = '$prefix/INPUT_SATURATED_FAT_PCT';
 export const INPUT_MONOUNSATURATED_FAT_PCT = '$prefix/INPUT_MONOUNSATURATED_FAT_PCT';
 export const INPUT_POLYUNSATURATED_FAT_PCT = '$prefix/INPUT_POLYUNSATURATED_FAT_PCT';
+
+export function trigger(type, ...x) { return {type, x};}
 
 //export const INPUT__PCT = '$prefix/INPUT__PCT';
 //export const INPUT__PCT = '$prefix/INPUT__PCT';
@@ -47,7 +50,6 @@ export const INPUT_POLYUNSATURATED_FAT_PCT = '$prefix/INPUT_POLYUNSATURATED_FAT_
 
 
 //export function reset() { return {type:RESET}; }
-export function trigger(type, ...x) { return {type, x};}
 
 //export function inputName(x) { return {type:INPUT_NAME, x}; }
 //export function selectUnit(x) { return {type:SELECT_UNIT, x,}; }

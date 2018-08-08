@@ -1,6 +1,6 @@
 'use strict';
 import React, {Component} from 'react';
-import {View, Text, ScrollView, Modal,} from 'react-native';
+import {View, Text, ScrollView, Modal, TouchableWithoutFeedback,} from 'react-native';
 import {Toolbar, Icon, IconToggle, Card, RadioButton, Button, Dialog, withTheme,} from '../components/react-native-material-ui';
 import TextField from '../components/react-native-material-textfield/adapted';
 import {bindActionCreators} from 'redux';
@@ -27,7 +27,6 @@ class AddDailyMealPage extends Component {
       total += 7 * ethanolPct;
     if (total > 0)
       pageActions.trigger(AddDailyMealPageActions.INPUT_ENERGY_PCT, total.toFixed(0));
-      //pageActions.inputEnergyPct(total.toFixed(0));
   }
   cancel(props) {
     const {pageActions, navigation,} = props;
@@ -38,38 +37,43 @@ class AddDailyMealPage extends Component {
     const {pageData, pageActions, dailyMealActions,} = props;
     dailyMealActions.trigger(DailyMealActions.ADD, DailyMealBusiness.getIdFromDate(new Date()), pageData);
     this.cancel(props)
-    //dailyMealActions.add(DailyMealBusiness.getIdFromDate(new Date()), pageData);
-    //pageActions.trigger(AddDailyMealPageActions.RESET);
-    //navigation.goBack();
   }
   render() {
     const {pageData, pageActions, navigation, theme,} = this.props;
     const percentageSuffix = pageData.unit + '/' + pageData.unitAmount + pageData.unit;
     const kcalSuffix = 'kcal/' + pageData.unitAmount + pageData.unit;
-    let energyAccessory = () => <IconToggle name='sync' onPress={() => this.calculateEnergyPct(this.props)}/>;
+    const energyAccessory = () => <IconToggle name='sync' onPress={() => this.calculateEnergyPct(this.props)}/>;
+    const selectUnitAndClose = (x) => {
+      pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT, x);
+      pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT_VISIBLE_TOGGLE);
+    }
     return (
       <View>
-        <Modal transparent={true} visible={pageData.isSelectUnitVisible} 
+        <Modal transparent={true} visible={pageData.isSelectUnitVisible}
           onRequestClose={() => pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT_VISIBLE_TOGGLE)}
           onDismiss={() => pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT_VISIBLE_TOGGLE)}
         >
-          <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
+        <TouchableWithoutFeedback style={{flex:1}} onPress={() => pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT_VISIBLE_TOGGLE)}>
+          <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'rgba(0,0,0,0.2)'}}>
             <Dialog>
-              <Dialog.Title><Text>Select a unit</Text></Dialog.Title>
+              <Dialog.Title>
+                <Text>Select a unit</Text>
+              </Dialog.Title>
               <Dialog.Content>
                 <View style={{height:theme.listItem.container.height}}>
                   <RadioButton value='g' label='Weight' checked={pageData.unit === 'g'}
-                    onSelect={(x) => pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT, x)}
+                    onSelect={(x) => selectUnitAndClose(x)}
                   />
                 </View>
                 <View style={{height:theme.listItem.container.height}}>
                   <RadioButton value='ml' label='Volume' checked={pageData.unit === 'ml'}
-                    onSelect={(x) => pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT, x)}
+                    onSelect={(x) => selectUnitAndClose(x)}
                   />
                 </View>
               </Dialog.Content>
             </Dialog>
           </View>
+          </TouchableWithoutFeedback>
         </Modal>
         <Toolbar centerElement='Add food' leftElement='arrow-back' onLeftElementPress={navigation.goBack} />
         <View style={{flexDirection:'row'}}>

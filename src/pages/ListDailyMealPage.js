@@ -30,7 +30,7 @@ class ListDailyMealPage extends Component {
       />;
     return (
       <View style={{flex:1}}>
-        <Toolbar centerElement={'Daily meals [' + list.reduce((x, y) => x + parseInt(energy(y)), 0) + ']' + dailyMealData.toto}/>
+        <Toolbar centerElement={'Daily meals [' + list.reduce((x, y) => x + parseInt(energy(y)), 0) + ']'}/>
         <ScrollView style={{flex:1}}>
           <FlatList
             data={list}

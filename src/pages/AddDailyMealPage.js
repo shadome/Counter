@@ -9,6 +9,16 @@ import DailyMealBusiness from '../business/DailyMealBusiness';
 import * as DailyMealActions from '../actions/DailyMealActions';
 import * as AddDailyMealPageActions from '../actions/AddDailyMealPageActions';
 
+class SelectUnitModal extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+    )
+  }
+}
+
 class AddDailyMealPage extends Component {
   constructor(props) {
     super(props);
@@ -38,6 +48,37 @@ class AddDailyMealPage extends Component {
     dailyMealActions.trigger(DailyMealActions.ADD, DailyMealBusiness.getIdFromDate(new Date()), pageData);
     this.cancel(props)
   }
+  renderSelectUnitModal(props) {
+    const {pageData, pageActions, theme,} = this.props;
+    return (
+      <Modal transparent={true} visible={pageData.isSelectUnitVisible}
+        onRequestClose={() => pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT_VISIBLE_TOGGLE)}
+        onDismiss={() => pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT_VISIBLE_TOGGLE)}
+      >
+      <TouchableWithoutFeedback style={{flex:1}} onPress={() => pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT_VISIBLE_TOGGLE)}>
+        <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'rgba(0,0,0,0.2)'}}>
+          <Dialog>
+            <Dialog.Title>
+              <Text>Select a unit</Text>
+            </Dialog.Title>
+            <Dialog.Content>
+              <View style={{height:theme.listItem.container.height}}>
+                <RadioButton value='g' label='Weight' checked={pageData.unit === 'g'}
+                  onSelect={(x) => selectUnitAndClose(x)}
+                />
+              </View>
+              <View style={{height:theme.listItem.container.height}}>
+                <RadioButton value='ml' label='Volume' checked={pageData.unit === 'ml'}
+                  onSelect={(x) => selectUnitAndClose(x)}
+                />
+              </View>
+            </Dialog.Content>
+          </Dialog>
+        </View>
+        </TouchableWithoutFeedback>
+      </Modal>
+    )
+  }
   render() {
     const {pageData, pageActions, navigation, theme,} = this.props;
     const percentageSuffix = pageData.unit + '/' + pageData.unitAmount + pageData.unit;
@@ -49,32 +90,7 @@ class AddDailyMealPage extends Component {
     }
     return (
       <View>
-        <Modal transparent={true} visible={pageData.isSelectUnitVisible}
-          onRequestClose={() => pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT_VISIBLE_TOGGLE)}
-          onDismiss={() => pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT_VISIBLE_TOGGLE)}
-        >
-        <TouchableWithoutFeedback style={{flex:1}} onPress={() => pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT_VISIBLE_TOGGLE)}>
-          <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'rgba(0,0,0,0.2)'}}>
-            <Dialog>
-              <Dialog.Title>
-                <Text>Select a unit</Text>
-              </Dialog.Title>
-              <Dialog.Content>
-                <View style={{height:theme.listItem.container.height}}>
-                  <RadioButton value='g' label='Weight' checked={pageData.unit === 'g'}
-                    onSelect={(x) => selectUnitAndClose(x)}
-                  />
-                </View>
-                <View style={{height:theme.listItem.container.height}}>
-                  <RadioButton value='ml' label='Volume' checked={pageData.unit === 'ml'}
-                    onSelect={(x) => selectUnitAndClose(x)}
-                  />
-                </View>
-              </Dialog.Content>
-            </Dialog>
-          </View>
-          </TouchableWithoutFeedback>
-        </Modal>
+        {this.renderSelectUnitModal(this.props)}
         <Toolbar centerElement='Add food' leftElement='arrow-back' onLeftElementPress={navigation.goBack} />
         <View style={{flexDirection:'row'}}>
           <Button style={{container:{width:'50%'}}} primary text="Cancel" icon="clear" onPress={() => this.cancel(this.props)} />

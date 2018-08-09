@@ -25,7 +25,7 @@ class ListDailyMealPage extends Component {
     const listItem = (item, index) =>
       <ListItem divider dense 
         //onLongPress={() => dailyMealActions.remove(key, index)}
-        onLongPress={() => dailyMealActions.trigger(dailyMealActions.REMOVE, key, index)}
+        onLongPress={() => dailyMealActions.trigger(DailyMealActions.REMOVE, key, index)}
         centerElement={{primaryText:item.name, secondaryText:item.quantity + item.unit,}}
         leftElement={listItemLeftElement} rightElement={listItemRightElement(item)} 
       />;
@@ -40,29 +40,23 @@ class ListDailyMealPage extends Component {
             ListFooterElement={<ListItem divider dense/>}
           />
         </ScrollView>
-        <ActionButton onPress={() => navigation.navigate('add_daily_meal_page')}/>
-        <MainBottomNavigationBar index={'0'} />
-        //<BottomNavigation 
-        //  active={'0'}
-        //  style={{ container: { position: 'absolute', bottom: 0, left: 0, right: 0 } }}
-        //>
-        //  <BottomNavigation.Action key='0' label="Today" onPress={}
-        //    icon={<Icon name="event_available" />}
-        //  />
-        //  <BottomNavigation.Action key='1' label="Add food" icon="create"
-        //    onPress={() => navigation.navigate('add_daily_meal_page')}
-        //  />
-        //  <BottomNavigation.Action key='2' icon="event_note" label="Calendar"
-        //    onPress={}
-        //  />
-        //  //<BottomNavigation.Action
-        //  //  key="settings"
-        //  //  icon="settings"
-        //  //  label="Settings"
-        //  //  onPress={}
-        //  ///>
-        //</BottomNavigation>
-      </}View>
+  {/* <Text>{dailyMealData.toto}</Text>
+        <ActionButton onPress={() => navigation.navigate('add_daily_meal_page')}/> 
+        <BottomNavigation 
+          active={'0'}
+          style={{ container: { position: 'absolute', bottom: 0, left: 0, right: 0 } }}
+        >
+          <BottomNavigation.Action key='0' label="Today"
+            icon={<Icon name="event-available" />}
+          />
+          <BottomNavigation.Action key='1' label="Add food" icon="create"
+            onPress={() => navigation.navigate('add_daily_meal_page')}
+          />
+          <BottomNavigation.Action key='2' icon="event-note" label="Calendar"
+            onPress={() => null}
+          />
+        </BottomNavigation>*/}
+      </View>
     );
   }
 }

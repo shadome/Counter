@@ -6,6 +6,7 @@ import {bindActionCreators} from 'redux';
 import * as DailyMealActions from '../actions/DailyMealActions';
 import DailyMealBusiness from '../business/DailyMealBusiness';
 import {connect} from 'react-redux';
+import MainBottomNavigationBar from '../fragments/MainBottomNavigationBarFragment'
 
 class ListDailyMealPage extends Component {
   constructor(props) {
@@ -40,27 +41,28 @@ class ListDailyMealPage extends Component {
           />
         </ScrollView>
         <ActionButton onPress={() => navigation.navigate('add_daily_meal_page')}/>
-        <BottomNavigation 
-          active={'0'}
-          style={{ container: { position: 'absolute', bottom: 0, left: 0, right: 0 } }}
-        >
-          <BottomNavigation.Action key='0' label="Today" onPress={}
-            icon={<Icon name="event_available" />}
-          />
-          <BottomNavigation.Action key='1' label="Add food" icon="create"
-            onPress={() => navigation.navigate('add_daily_meal_page')}
-          />
-          <BottomNavigation.Action key='2' icon="event_note" label="Calendar"
-            onPress={}
-          />
-          //<BottomNavigation.Action
-          //  key="settings"
-          //  icon="settings"
-          //  label="Settings"
-          //  onPress={}
-          ///>
-        </BottomNavigation>
-      </View>
+        <MainBottomNavigationBar index={'0'} />
+        //<BottomNavigation 
+        //  active={'0'}
+        //  style={{ container: { position: 'absolute', bottom: 0, left: 0, right: 0 } }}
+        //>
+        //  <BottomNavigation.Action key='0' label="Today" onPress={}
+        //    icon={<Icon name="event_available" />}
+        //  />
+        //  <BottomNavigation.Action key='1' label="Add food" icon="create"
+        //    onPress={() => navigation.navigate('add_daily_meal_page')}
+        //  />
+        //  <BottomNavigation.Action key='2' icon="event_note" label="Calendar"
+        //    onPress={}
+        //  />
+        //  //<BottomNavigation.Action
+        //  //  key="settings"
+        //  //  icon="settings"
+        //  //  label="Settings"
+        //  //  onPress={}
+        //  ///>
+        //</BottomNavigation>
+      </}View>
     );
   }
 }

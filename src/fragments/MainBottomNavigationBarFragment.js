@@ -14,16 +14,17 @@ class MainBottomNavigationBarFragment extends Component {
         active={index}
         style={{ container: { position: 'absolute', bottom: 0, left: 0, right: 0 } }}
       >
-        <BottomNavigation.Action key='0' label="Today" 
-          onPress={index !== {'0'} ? () => navigation.navigate('list_daily_meal_page') : () => null}
-          icon={index !== {'0'} ? 'event_available' : <Icon name='event_available' />}
+        <BottomNavigation.Action key='0' label='Today' 
+          // { index !== '0' && (onPress={() => navigation.navigate('list_daily_meal_page')})}
+          icon={index !== '0' ? 'event_available' : <Icon name='event-available' />}
         />
-        <BottomNavigation.Action key='1' label="Add food" 
-          onPress={index !== {'1'} ? () => navigation.navigate('add_daily_meal_page') : () => null}
-          icon={index !== {'1'} ? 'create' : <Icon name='create'/>}
+        <BottomNavigation.Action key='1' label='Add food' 
+          // onPress={index !== '1' ? () => navigation.navigate('add_daily_meal_page') : () => null}
+          onPress={() => navigation.navigate('add_daily_meal_page')}
+          icon={index !== '1' ? 'create' : <Icon name='create'/>}
         />
-        <BottomNavigation.Action} key='2' label="Calendar"
-          icon={index !== {'2'} ? 'event-note' : <Icon name='event-note'/>}
+        <BottomNavigation.Action key='2' label='Calendar'
+          icon={index !== '2' ? 'event-note' : <Icon name='event-note'/>}
           onPress={() => null}
         />
       </BottomNavigation>

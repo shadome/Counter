@@ -40,6 +40,7 @@ class ListDailyMealPage extends Component {
             ListFooterElement={<ListItem divider dense/>}
           />
         </ScrollView>
+        <MainBottomNavigationBar navigation={navigation} index='0'/>
   {/* <Text>{dailyMealData.toto}</Text>
         <ActionButton onPress={() => navigation.navigate('add_daily_meal_page')}/> 
         <BottomNavigation 

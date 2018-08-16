@@ -9,15 +9,15 @@ import DailyMealBusiness from '../business/DailyMealBusiness';
 import * as DailyMealActions from '../actions/DailyMealActions';
 import * as AddDailyMealPageActions from '../actions/AddDailyMealPageActions';
 
-class SelectUnitModal extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-    )
-  }
-}
+// class SelectUnitModal extends Component {
+//   constructor(props) {
+//     super(props);
+//   }
+//   render() {
+//     return (
+//     )
+//   }
+// }
 
 class AddDailyMealPage extends Component {
   constructor(props) {

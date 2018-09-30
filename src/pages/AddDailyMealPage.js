@@ -115,8 +115,8 @@ class AddDailyMealPage extends Component {
         {this.renderSelectUnitModal(this.props)}
         <Toolbar centerElement='Add food' leftElement='arrow-back' onLeftElementPress={navigation.goBack} />
         <View style={{flexDirection:'row'}}>
-          <Button style={{container:{width:'50%'}}} primary text="Cancel" icon="clear" onPress={() => this.cancel(this.props)} />
-          <Button style={{container:{width:'50%'}}} primary text="Submit" icon="done" onPress={() => this.submit(this.props)} />
+          <Button style={{container:{flex:1}}} primary text="Cancel" icon="clear" onPress={() => this.cancel(this.props)} />
+          <Button style={{container:{flex:1}}} primary text="Submit" icon="done" onPress={() => this.submit(this.props)} />
         </View>
         <ScrollView>
           <CollapsibleCard style={{paddingLeft:16, paddingRight:16, paddingBottom:8, paddingTop:8}}

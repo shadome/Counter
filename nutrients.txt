@@ -1,0 +1,52 @@
+#Energy, Regulation EU No 1169/2011 (kcal/100g)
+
+#Macronutrients
+Protein (g/100g) -- DRIRDA 25yo m 56g -- 10-35%
+Carbohydrate (g/100g) -- DRIRDA 25yo m 130g -- 45-65%
+Sugars (g/100g) (parent: Carbo) -- DRIRDA 0-25% (of total)
+Fibres (g/100g) (parent: Carbo) -- DRIRDA 25yo m 38g
+Starch (g/100g) (parent: Carbo)
+Fat (g/100g) -- DRIRDA 25yo m 20-35%
+Monounsaturated fatty acids (g/100g) (parent: Fat)
+Fatty acids oleic n-9 (g/100g) (parent: Monounsaturated)
+Polyunsaturated fatty acids (g/100g) (parent: Fat)
+Fatty acids alpha-linolénique (n-3) (g/100g) (parent: Polyunsaturated) -- DRIRDA 25yo m 1.6g -- 0.6-1.2%
+Fatty acids EPA (n-3) (g/100g) (parent: Polyunsaturated)
+Fatty acids DHA (n-3) (g/100g) (parent: Polyunsaturated)
+Fatty acids linoleic (n-6) (g/100g) (parent: Polyunsaturated) -- DRIRDA 25yo m 17g -- 5-10%
+Fatty acids arachidonic (n-6) (g/100g) (parent: Polyunsaturated)
+Saturated fatty acids (g/100g) (parent: Fat) -- DRIRDA 'as low as possible'
+
+#Minerals
+Calcium (mg/100g) (parent: Minerals) -- DRIRDA 25yo m 1000mg to 2500mg
+Chromium (parent:Minerals) -- DRIRDA 25yo m 35µg
+Chloride (mg/100g) (parent: Minerals) -- DRIRDA 25yo m 2300mg to 3600mg
+Copper (mg/100g) (parent: Minerals) -- DRIRDA 25yo m 0.9mg to 10mg
+Fluoride (parent: Minerals) -- DRIRDA 25yo m 4mg  to 10mg
+Iodine (µg/100g) (parent: Minerals) -- DRIRDA 25yo m 150µg to 1100µg
+Iron (mg/100g) (parent: Minerals) -- DRIRDA 25yo m 8mg to 45mg
+Magnesium (mg/100g) (parent: Minerals) -- DRIRDA 25yo m 400mg
+Manganese (mg/100g) (parent: Minerals) -- DRIRDA 25yo m 2.3mg to 11mg
+Molybdenum (parent: Minerals) -- DRIRDA 25yo m 45µg to 2000µg
+Phosphorus (mg/100g) (parent: Minerals) -- DRIRDA 25yo m 700mg to 4000mg
+Potassium (mg/100g) (parent: Minerals) -- DRIRDA 25yo m 4700mg
+Selenium (µg/100g) (parent: Minerals) -- DRIRDA 25yo m 55µg to 400µg
+Sodium (mg/100g) (parent: Minerals) -- DRIRDA 25yo m 1500mg to 2300mg
+Zinc (mg/100g) (parent: Minerals) -- DRIRDA 25yo m 11mg to 40mg
+
+#Vitamins
+Beta-carotene (provitamin A) (µg/100g)  (parent: Vitamins)
+Vitamin A1 or Retinol (µg/100g) (parent: Vitamins) -- DRIRDA 25yo m 900µg to 3000µg
+Vitamin B1 or Thiamin (mg/100g) (parent: Vitamins) -- DRIRDA 25yo m 1.2mg
+Vitamin B2 or Riboflavin (mg/100g) (parent: Vitamins) -- DRIRDA 25yo m 1.3mg
+Vitamin B3 or PP or Niacin (mg/100g) (parent: Vitamins) -- DRIRDA 25yo m 16mg to 35mg
+Vitamin B5 or Pantothenic acid (mg/100g) (parent: Vitamins) -- DRIRDA 25yo m 5mg
+Vitamin B6 (mg/100g) (parent: Vitamins) -- DRIRDA 25yo m 1.3mg to 100mg
+Vitamin B9 or Folate (µg/100g) (parent: Vitamins) -- DRIRDA 25yo m 400µg to 1000µg
+Vitamin B12 (µg/100g) (parent: Vitamins) -- DRIRDA 25yo m 2.4µg
+Vitamin C (mg/100g) (parent: Vitamins) -- DRIRDA 25yo m 90mg to 2000mg
+Vitamin D (µg/100g) (parent: Vitamins) -- DRIRDA 25yo m 15µg to 50µg
+Vitamin E (mg/100g) (parent: Vitamins) -- DRIRDA 25yo m 15mg to 1000mg
+Vitamin K1 (µg/100g) (parent: Vitamins) -- DRIRDA 25yo m 120µg
+Vitamin K2 (µg/100g) (parent: Vitamins) -- DRIRDA 25yo m 120µg
+Choline (parent: Vitamins) -- DRIRDA 25yo m 550mg to 3500mg

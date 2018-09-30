@@ -33,12 +33,22 @@ class ListDailyMealPage extends Component {
       <View style={{flex:1}}>
         <Toolbar centerElement={'Daily meals [' + list.reduce((x, y) => x + parseInt(energy(y)), 0) + ']'}/>
         <ScrollView style={{flex:1}}>
+          {list === undefined || list.length < 1 ? 
+          <View style={{alignContent:'center', justifyContent:'space-around', alignItems:'center', flex:1}}>
+            <View style={{flex:1}}/>
+            <Icon name='folder-open' text='empty' style={{fontSize:50}}/>
+            <Text>Empty...</Text>
+            <View style={{flex:1}}/>
+          </View>
+          :
           <FlatList
-            data={list}
-            keyExtractor={(item,index) => index.toString()}
-            renderItem={({item, index}) => listItem(item, index)}
-            ListFooterElement={<ListItem divider dense/>}
-          />
+          data={list}
+          keyExtractor={(item,index) => index.toString()}
+          renderItem={({item, index}) => listItem(item, index)}
+          ListFooterElement={<ListItem divider dense/>}
+        />
+          }
+          
         </ScrollView>
         <MainBottomNavigationBar navigation={navigation} index='0'/>
   {/* <Text>{dailyMealData.toto}</Text>

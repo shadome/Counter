@@ -1,6 +1,6 @@
 'use strict';
 import React, {Component} from 'react';
-import {View, Text, ScrollView, Modal, TouchableWithoutFeedback,} from 'react-native';
+import {View, Text, ScrollView, Modal, TouchableWithoutFeedback, Keyboard} from 'react-native';
 import {Toolbar, Icon, IconToggle, Card, RadioButton, Button, Dialog, withTheme,} from '../components/react-native-material-ui';
 import TextField from '../components/react-native-material-textfield/adapted';
 import {bindActionCreators} from 'redux';
@@ -8,6 +8,9 @@ import {connect} from 'react-redux';
 import DailyMealBusiness from '../business/DailyMealBusiness';
 import * as DailyMealActions from '../actions/DailyMealActions';
 import * as AddDailyMealPageActions from '../actions/AddDailyMealPageActions';
+import MainBottomNavigationBar from '../fragments/MainBottomNavigationBarFragment'
+import KeyboardScrollView from '../components/KeyboardScrollView'
+import CollapsibleCard from '../components/CollapsibleCard';
 
 // class SelectUnitModal extends Component {
 //   constructor(props) {
@@ -22,7 +25,18 @@ import * as AddDailyMealPageActions from '../actions/AddDailyMealPageActions';
 class AddDailyMealPage extends Component {
   constructor(props) {
     super(props);
+    this.state = {isKeyboardVisible: false};
   }
+  componentWillMount () {
+    this.keyboardWillShowSub = Keyboard.addListener('keyboardDidShow', () => this.setState({...this.state, isKeyboardVisible: true}));
+    this.keyboardWillHideSub = Keyboard.addListener('keyboardDidHide', () => this.setState({...this.state, isKeyboardVisible: false}));
+  }
+
+  componentWillUnmount() {
+    this.keyboardWillShowSub.remove();
+    this.keyboardWillHideSub.remove();
+  }
+
   calculateEnergyPct(props) {
     const {pageActions, pageData} = props;
     const {fatPct, carbohydratesPct, proteinPct, ethanolPct} = pageData;
@@ -88,8 +102,16 @@ class AddDailyMealPage extends Component {
       pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT, x);
       pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT_VISIBLE_TOGGLE);
     }
+    let {isKeyboardVisible} = this.state;
+    // TODO scrollview personnalisé qui garde son scrollPosition courant à jour, pour pouvoir utiliser des scrollTo sous forme d'offset
+    /*
+          ref={ref => this.scrollView = ref}
+          onContentSizeChange={(contentWidth, contentHeight)=>{        
+              this.scrollView.scrollToEnd({animated: true});
+          }}
+    */
     return (
-      <View>
+      <View style={{flex:1}}>
         {this.renderSelectUnitModal(this.props)}
         <Toolbar centerElement='Add food' leftElement='arrow-back' onLeftElementPress={navigation.goBack} />
         <View style={{flexDirection:'row'}}>
@@ -97,13 +119,14 @@ class AddDailyMealPage extends Component {
           <Button style={{container:{width:'50%'}}} primary text="Submit" icon="done" onPress={() => this.submit(this.props)} />
         </View>
         <ScrollView>
-          <Card style={{paddingLeft:16, paddingRight:16, paddingBottom:8, paddingTop:8}}>
-            <Text style={theme.typography.subheading}>Information</Text>
+          <CollapsibleCard style={{paddingLeft:16, paddingRight:16, paddingBottom:8, paddingTop:8}}
+            title="General information"
+          >
             <TextField label='Name' 
               value={pageData.name} onChangeText={(x) => pageActions.trigger(AddDailyMealPageActions.INPUT_NAME, x)}
             />
-            <View style={{flex:1,flexDirection:'row'}}>
-              <TextField style={{flex:1}} label='Quantity' suffix={pageData.unit} keyboardType='numeric' containerStyle={{flex:1}}
+            <View style={{flexDirection:'row'}}>
+              <TextField label='Quantity' suffix={pageData.unit} keyboardType='numeric' containerStyle={{flex:1}}
                 value={pageData.quantity} onChangeText={(x) => pageActions.trigger(AddDailyMealPageActions.INPUT_QUANTITY, x)}
               />
               <View style={{width:16}}/>
@@ -113,9 +136,10 @@ class AddDailyMealPage extends Component {
             </View>
             <View style={{height:16}}/>
             <Button primary text="select unit" onPress={() => pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT_VISIBLE_TOGGLE)}/>
-          </Card>
-          <Card style={{paddingLeft:16, paddingRight:16, paddingBottom:8, paddingTop:8}}>
-            <Text style={theme.typography.subheading}>Macronutrients</Text>
+          </CollapsibleCard>
+          <CollapsibleCard style={{paddingLeft:16, paddingRight:16, paddingBottom:8, paddingTop:8}}
+            title="Macronutrients"
+          >
             <View style={{flexDirection:'row'}}>
                 <TextField label='Protein' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
                   value={pageData.proteinPct} onChangeText={(x) => pageActions.trigger(AddDailyMealPageActions.INPUT_PROTEIN_PCT, x)}
@@ -134,8 +158,9 @@ class AddDailyMealPage extends Component {
                 value={pageData.ethanolPct} onChangeText={(x) => pageActions.trigger(AddDailyMealPageActions.INPUT_ETHANOL_PCT, x)}
               />
             </View>
-          </Card>
+          </CollapsibleCard>
         </ScrollView>
+        {!isKeyboardVisible && <MainBottomNavigationBar navigation={navigation} index='1'/>}
        </View>
     );
   }

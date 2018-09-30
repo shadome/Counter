@@ -9,6 +9,9 @@ const prefix = 'ADD_DAILY_MEAL_PAGE'
 export const RESET = `${prefix}/RESET`
 export const INPUT_NAME = `${prefix}/INPUT_NAME`
 export const SELECT_UNIT_VISIBLE_TOGGLE = `${prefix}/SELECT_UNIT_VISIBLE_TOGGLE`
+// export const GENERAL_INFORMATION_CARD_VISIBLE_TOGGLE = `${prefix}/GENERAL_INFORMATION_CARD_VISIBLE_TOGGLE`
+// export const MACRONUTRIENTS_CARD_VISIBLE_TOGGLE = `${prefix}/MACRONUTRIENTS_CARD_VISIBLE_TOGGLE`
+// export const MICRONUTRIENTS_CARD_VISIBLE_TOGGLE = `${prefix}/MICRONUTRIENTS_CARD_VISIBLE_TOGGLE`
 export const SELECT_UNIT = `${prefix}/SELECT_UNIT`
 export const INPUT_QUANTITY = `${prefix}/INPUT_QUANTITY`
 // macro: sucres fibres amidon polyols cendres cholestérol AGsatures AGpolyinsaturés(n9) AGmonoinsaturés(n6n3)

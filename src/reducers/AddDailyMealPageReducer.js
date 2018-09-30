@@ -5,6 +5,9 @@ const initialState = {
   unit: 'g',
   unitAmount: 100,
   isSelectUnitVisible: false,
+  // isGeneralInformationVisible: true,
+  // isMacronutrientsVisible: true,
+  // isMicronutrientsVisible: true,
  };
 
 export default function addDailyMealPageReducer(state = initialState, action = {}) {
@@ -13,6 +16,9 @@ export default function addDailyMealPageReducer(state = initialState, action = {
     case types.INPUT_NAME: return {...state, name:action.x[0]};
     case types.SELECT_UNIT: return {...state, unit:action.x[0]};
     case types.SELECT_UNIT_VISIBLE_TOGGLE: {return {...state, isSelectUnitVisible:!state.isSelectUnitVisible}}
+    // case types.GENERAL_INFORMATION_CARD_VISIBLE_TOGGLE: {return {...state, isGeneralInformationVisible:!state.isGeneralInformationVisible}}
+    // case types.MACRONUTRIENTS_CARD_VISIBLE_TOGGLE: {return {...state, isMacronutrientsVisible:!state.isMacronutrientsVisible}}
+    // case types.MICRONUTRIENTS_CARD_VISIBLE_TOGGLE: {return {...state, isMicronutrientsVisible:!state.isMicronutrientsVisible}}
     case types.INPUT_QUANTITY: return {...state, quantity:action.x[0]};
     // macro
     case types.INPUT_ENERGY_PCT: return {...state, energyPct:action.x[0]};

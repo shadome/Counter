@@ -120,7 +120,7 @@ class AddDailyMealPage extends Component {
         </View>
         <ScrollView>
           <CollapsibleCard style={{paddingLeft:16, paddingRight:16, paddingBottom:8, paddingTop:8}}
-            title="General information"
+            title="General information" 
           >
             <TextField label='Name' 
               value={pageData.name} onChangeText={(x) => pageActions.trigger(AddDailyMealPageActions.INPUT_NAME, x)}

@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Text, View, ScrollView, Animated, Keyboard } from 'react-native';
 import {IconToggle, Card, withTheme} from '../components/react-native-material-ui';
+import { PropTypes } from 'prop-types';
 
-class CollapsibleCard extends Component {
+class CollapsibleCard extends PureComponent {
   state = {
     collapsed: false,
     contentHeight: new Animated.Value(),
     maxHeight: 0,
   };
 
-  toggle(collapsed) {
+  toggle() {
     Animated.timing(this.state.contentHeight, {
       duration: 200,
       toValue: this.state.collapsed ? this.state.maxHeight : 0
@@ -20,11 +21,10 @@ class CollapsibleCard extends Component {
   _setMaxHeight(event){
     let newHeight = event.nativeEvent.layout.height;
     if (newHeight > this.state.maxHeight) {
-      this.state.contentHeight.setValue(event.nativeEvent.layout.height);
       this.setState({
         ...this.state,
-        // contentHeight: new Animated.Value(event.nativeEvent.layout.height),
-        maxHeight: event.nativeEvent.layout.height
+        contentHeight: new Animated.Value(newHeight),
+        maxHeight: newHeight
       });
     }
   }
@@ -42,12 +42,16 @@ class CollapsibleCard extends Component {
         </View>
         <Animated.View style={{height: this.state.contentHeight}}>
           <View onLayout={this._setMaxHeight.bind(this)}>
-              {children}
+            {children}
           </View>
         </Animated.View>
       </Card>
     );
   }
 };
+
+CollapsibleCard.propTypes = {
+  title: PropTypes.string.isRequired,
+}
 
 export default withTheme(CollapsibleCard);

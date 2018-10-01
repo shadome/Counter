@@ -27,8 +27,9 @@ export default function addDailyMealPageReducer(state = initialState, action = {
     case types.INPUT_ETHANOL_PCT: return {...state, ethanolPct:action.x[0]};
     case types.INPUT_CARBOHYDRATES_PCT: return {...state, carbohydratesPct:action.x[0]};
     case types.INPUT_SATURATED_FAT_PCT: return {...state, carbohydratesPct:action.x[0]};
-    case types.INPUT_MONOUNSATURATED_FAT_PCT: return {...state, monounsaturatedFatPct:action.x[0]};
-    case types.INPUT_POLYUNSATURATED_FAT_PCT: return {...state, polyunsaturatedFatPct:action.x[0]};
+    case types.INPUT_N9_FAT_PCT: return {...state, n9FatPct:action.x[0]};
+    case types.INPUT_N6_FAT_PCT: return {...state, n6FatPct:action.x[0]};
+    case types.INPUT_N3_FAT_PCT: return {...state, n3FatPct:action.x[0]};
     // vitamins
     case types.INPUT_K_PHYLLOQUINONE_MENAQUINONES_PCT: return {...state, vitaminKPct:action.x[0]}
     case types.INPUT_E_TOCOPHEROLS_TOCOTRIENOLS_PCT: return {...state, vitaminEPct:action.x[0]}

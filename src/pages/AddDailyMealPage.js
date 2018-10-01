@@ -120,14 +120,15 @@ class AddDailyMealPage extends Component {
           rightElement={
             <Button
               style={{text:{color:theme.palette.canvasColor}}}
-              text="register"
+              text='register'
               onPress={() => this.submit(this.props)} 
             />
           }
           />
         <ScrollView>
+          <View style={{height:8}}/>
           <CollapsibleCard style={{paddingLeft:16, paddingRight:16, paddingBottom:8, paddingTop:8}}
-            title="General information" 
+            title='General information' 
           >
             <TextField label='Name' 
               value={pageData.name} onChangeText={(x) => pageActions.trigger(AddDailyMealPageActions.INPUT_NAME, x)}
@@ -138,14 +139,14 @@ class AddDailyMealPage extends Component {
               />
               <View style={{width:16}}/>
               <Button primary raised style={{container:{flex:0.7}}} 
-                text="select unit" 
+                text='select unit' 
                 onPress={() => pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT_VISIBLE_TOGGLE)}
               />
             </View>
             {/* <View style={{height:16}}/> */}
           </CollapsibleCard>
           <CollapsibleCard style={{paddingLeft:16, paddingRight:16, paddingBottom:8, paddingTop:8}}
-            title="Macronutrients"
+            title='Macronutrients'
           >
             <View style={{flexDirection:'row', alignItems:'baseline'}}>
               <TextField label='Energy' suffix={kcalSuffix} keyboardType='numeric' containerStyle={{flex:1}}
@@ -159,9 +160,9 @@ class AddDailyMealPage extends Component {
               />
             </View>
             <View style={{flexDirection:'row'}}>
-                <TextField label='Protein' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
-                  value={pageData.proteinPct} onChangeText={(x) => pageActions.trigger(AddDailyMealPageActions.INPUT_PROTEIN_PCT, x)}
-                />
+              <TextField label='Protein' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
+                value={pageData.proteinPct} onChangeText={(x) => pageActions.trigger(AddDailyMealPageActions.INPUT_PROTEIN_PCT, x)}
+              />
               <View style={{width:16}}/>
               <TextField label='Carbohydrates' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
                 value={pageData.carbohydratesPct} onChangeText={(x) => pageActions.trigger(AddDailyMealPageActions.INPUT_CARBOHYDRATES_PCT, x)}
@@ -177,6 +178,51 @@ class AddDailyMealPage extends Component {
               />
             </View>
           </CollapsibleCard>
+          <CollapsibleCard style={{paddingLeft:16, paddingRight:16, paddingBottom:8, paddingTop:8}}
+            title='Detailed macronutrients'
+          >
+            <View style={{flexDirection:'row'}}>
+              <TextField label='Saturated fat' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
+                value={pageData.saturatedFatPct} onChangeText={(x) => pageActions.trigger(AddDailyMealPageActions.INPUT_SATURATED_FAT_PCT, x)}
+              />
+              <View style={{width:16}}/>
+              <TextField label='ω−9 (MUFA)' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
+                value={pageData.n9FatPct} onChangeText={(x) => pageActions.trigger(AddDailyMealPageActions.INPUT_N9_FAT_PCT, x)}
+              />
+            </View>
+            <View style={{flexDirection:'row'}}>
+              <TextField label='ω−6 (PUFA)' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
+                value={pageData.n6FatPct} onChangeText={(x) => pageActions.trigger(AddDailyMealPageActions.INPUT_N6_FAT_PCT, x)}
+              />
+              <View style={{width:16}}/>
+              <TextField label='ω−3 (PUFA)' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
+                value={pageData.n3FatPct} onChangeText={(x) => pageActions.trigger(AddDailyMealPageActions.INPUT_N3_FAT_PCT, x)}
+              />
+            </View>
+          </CollapsibleCard>
+          <CollapsibleCard style={{paddingLeft:16, paddingRight:16, paddingBottom:8, paddingTop:8}}
+            title='Vitamins'
+          >
+            <View style={{flexDirection:'row'}}>
+              <TextField label='A equiv. (β-carotene)' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
+                value={pageData.vitaminAPct} onChangeText={(x) => pageActions.trigger(AddDailyMealPageActions.INPUT_A_CAROTENOIDS_PCT, x)}
+              />
+              <View style={{width:16}}/>
+              <TextField label='B1 (thiamine)' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
+                value={pageData.vitaminB1Pct} onChangeText={(x) => pageActions.trigger(AddDailyMealPageActions.INPUT_B1_THIAMINE_PCT, x)}
+              />
+            </View>
+            <View style={{flexDirection:'row'}}>
+              <TextField label='B2 (riboflavin)' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
+                value={pageData.vitaminB2Pct} onChangeText={(x) => pageActions.trigger(AddDailyMealPageActions.INPUT_B2_RIBOFLAVIN_PCT, x)}
+              />
+              <View style={{width:16}}/>
+              <TextField label='B3 (niacin, ...)' suffix={percentageSuffix} keyboardType='numeric' containerStyle={{flex:1}}
+                value={pageData.vitaminB3Pct} onChangeText={(x) => pageActions.trigger(AddDailyMealPageActions.INPUT_B3_NIACIN_ETC_PCT, x)}
+              />
+            </View>
+          </CollapsibleCard>
+          <View style={{height:8}}/>
         </ScrollView>
         {!isKeyboardVisible && <MainBottomNavigationBar navigation={navigation} index='1'/>}
        </View>

@@ -3,9 +3,7 @@ import * as types from "../actions/DailyMealActions";
 import DailyMealBusiness from "../business/DailyMealBusiness";
 
 const initialState = {
-  dailyMealHistory: {},
-  toto:'toto',
-  // toto:DailyMealBusiness.getIdFromDate(new Date()),
+  dailyMealHistory: {},  
   // dailyMealHistory: {[DailyMealBusiness.getIdFromDate(new Date())]: [
   //     {name: 'Banana', quantity: 200, unit: 'g', energyPct: 77, unitAmount:100}, 
   //     {name: 'Banana', quantity: 200, unit: 'g', energyPct: 77, unitAmount:100}, 

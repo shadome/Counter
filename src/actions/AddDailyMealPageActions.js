@@ -21,8 +21,9 @@ export const INPUT_CARBOHYDRATES_PCT = `${prefix}/INPUT_CARBOHYDRATES_PCT`
 export const INPUT_PROTEIN_PCT = `${prefix}/INPUT_PROTEIN_PCT`
 export const INPUT_ETHANOL_PCT = `${prefix}/INPUT_ETHANOL_PCT`
 export const INPUT_SATURATED_FAT_PCT = `${prefix}/INPUT_SATURATED_FAT_PCT`
-export const INPUT_MONOUNSATURATED_FAT_PCT = `${prefix}/INPUT_MONOUNSATURATED_FAT_PCT`
-export const INPUT_POLYUNSATURATED_FAT_PCT = `${prefix}/INPUT_POLYUNSATURATED_FAT_PCT`
+export const INPUT_N9_FAT_PCT = `${prefix}/INPUT_N9_FAT_PCT`
+export const INPUT_N6_FAT_PCT = `${prefix}/INPUT_N6_FAT_PCT`
+export const INPUT_N3_FAT_PCT = `${prefix}/INPUT_N3_FAT_PCT`
 // vitamins: rétinol beta-carotene D E K1 K2 C B1(thiamine) B2(riboflavine) B3(PP,niacine) B5(acide_panthothénique) B6 +B7(biotin) B9(folates) B12
 export const INPUT_K_PHYLLOQUINONE_MENAQUINONES_PCT = `${prefix}/INPUT_K_PHYLLOQUINONE_MENAQUINONES_PCT`
 export const INPUT_E_TOCOPHEROLS_TOCOTRIENOLS_PCT = `${prefix}/INPUT_E_TOCOPHEROLS_TOCOTRIENOLS_PCT`

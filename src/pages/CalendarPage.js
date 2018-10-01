@@ -1,26 +1,26 @@
-'use strict';
-import React, {Component} from 'react';
-import {View, Text, ScrollView, Modal, TouchableWithoutFeedback,} from 'react-native';
-import {Toolbar, Icon, IconToggle, Card, RadioButton, Button, Dialog, withTheme,} from '../components/react-native-material-ui';
-import TextField from '../components/react-native-material-textfield/adapted';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import DailyMealBusiness from '../business/DailyMealBusiness';
-import * as DailyMealActions from '../actions/DailyMealActions';
-import * as AddDailyMealPageActions from '../actions/AddDailyMealPageActions';
+'use strict'
+import React, {Component} from 'react'
+import {View, Text, ScrollView, Modal, TouchableWithoutFeedback,} from 'react-native'
+import {Toolbar, Icon, IconToggle, Card, RadioButton, Button, Dialog, withTheme,} from '../components/react-native-material-ui'
+import TextField from '../components/react-native-material-textfield/adapted'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+import DailyMealBusiness from '../business/DailyMealBusiness'
+import * as DailyMealActions from '../actions/DailyMealActions'
+import * as AddDailyMealPageActions from '../actions/AddDailyMealPageActions'
 
 class CalendarPage extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
   render() {
-    // const {pageData, pageActions, navigation, theme,} = this.props;
-    // const percentageSuffix = pageData.unit + '/' + pageData.unitAmount + pageData.unit;
-    // const kcalSuffix = 'kcal/' + pageData.unitAmount + pageData.unit;
-    // const energyAccessory = () => <IconToggle name='sync' onPress={() => this.calculateEnergyPct(this.props)}/>;
+    // const {pageData, pageActions, navigation, theme,} = this.props
+    // const percentageSuffix = pageData.unit + '/' + pageData.unitAmount + pageData.unit
+    // const kcalSuffix = 'kcal/' + pageData.unitAmount + pageData.unit
+    // const energyAccessory = () => <IconToggle name='sync' onPress={() => this.calculateEnergyPct(this.props)}/>
     // const selectUnitAndClose = (x) => {
-    //   pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT, x);
-    //   pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT_VISIBLE_TOGGLE);
+    //   pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT, x)
+    //   pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT_VISIBLE_TOGGLE)
     // }
     return (
       <View>
@@ -96,7 +96,7 @@ class CalendarPage extends Component {
           </Card>
         </ScrollView> */}
        </View>
-    );
+    )
   }
 }
 
@@ -109,4 +109,4 @@ export default connect(
     // pageActions: bindActionCreators(AddDailyMealPageActions, dispatch),
     // dailyMealActions: bindActionCreators(DailyMealActions, dispatch),
   })
-)(withTheme(AddDailyMealPage));
+)(withTheme(AddDailyMealPage))

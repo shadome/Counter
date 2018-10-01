@@ -1,14 +1,13 @@
-'use strict';
-import React, {Component} from 'react';
-//import {} from 'react-native';
-import {Icon, BottomNavigation, withTheme} from '../components/react-native-material-ui';
+'use strict'
+import React, { Component } from 'react'
+import { Icon, BottomNavigation, withTheme } from '../components/react-native-material-ui'
 
 class MainBottomNavigationBarFragment extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
   render() {
-    const {navigation, index} = this.props;
+    const {navigation, index} = this.props
     return (
       <BottomNavigation 
         active={index} 
@@ -31,4 +30,4 @@ class MainBottomNavigationBarFragment extends Component {
   }
 }
 
-export default withTheme(MainBottomNavigationBarFragment);
+export default withTheme(MainBottomNavigationBarFragment)

@@ -1,6 +1,6 @@
 'use strict'
 import React, { Component } from 'react'
-import { Icon, BottomNavigation, withTheme } from '../components/react-native-material-ui'
+import { Icon, BottomNavigation, withTheme } from '../../lib/react-native-material-ui'
 
 class MainBottomNavigationBarFragment extends Component {
   constructor(props) {
@@ -14,11 +14,11 @@ class MainBottomNavigationBarFragment extends Component {
         style={{ container: { bottom: 0} }}
       >
         <BottomNavigation.Action key='0' label='Today' 
-          onPress={index !== '0' ? () => navigation.navigate('list_daily_meal_page') : undefined}
+          onPress={index !== '0' ? () => navigation.navigate('DAILY_MEALS_PAGE') : undefined}
           icon='event-available'
         />
-        <BottomNavigation.Action key='1' label='Add food' 
-          onPress={index !== '1' ? () => navigation.navigate('add_daily_meal_page') : undefined}
+        <BottomNavigation.Action key='1' label='Register food' 
+          onPress={index !== '1' ? () => navigation.navigate('REGISTER_FOOD_PAGE') : undefined}
           icon='create'
         />
         <BottomNavigation.Action key='2' label='Calendar'

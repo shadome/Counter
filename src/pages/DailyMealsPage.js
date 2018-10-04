@@ -1,31 +1,31 @@
 'use strict'
 import React, {Component} from 'react'
 import {NativeModules, StatusBar, View, ScrollView, Text, FlatList} from 'react-native'
-import {COLOR, ThemeProvider, ListItem, Checkbox, Button, Toolbar, Icon, ActionButton, BottomNavigation, withTheme} from '../components/react-native-material-ui'
 import {bindActionCreators} from 'redux'
-import * as DailyMealActions from '../actions/DailyMealActions'
-import DailyMealBusiness from '../business/DailyMealBusiness'
 import {connect} from 'react-redux'
+import {COLOR, ThemeProvider, ListItem, Checkbox, Button, Toolbar, Icon, ActionButton, BottomNavigation, withTheme} from '../../lib/react-native-material-ui'
+import * as DailyMealsActions from '../actions/DailyMealsActions'
+import DailyMealsBusiness from '../business/DailyMealsBusiness'
 import MainBottomNavigationBar from '../fragments/MainBottomNavigationBarFragment'
 
-class ListDailyMealPage extends Component {
+class DailyMealsPage extends Component {
   constructor(props) {
     super(props)
-    this.currentKey = DailyMealBusiness.getIdFromDate(new Date())
+    this.currentKey = DailyMealsBusiness.getIdFromDate(new Date())
   }
   //https://github.com/wix/react-native-calendars
   render() {
-    const {dailyMealData, dailyMealActions, navigation, theme,} = this.props
+    const {dailyMealsData, dailyMealsActions, navigation, theme,} = this.props
     const key = this.currentKey
-    this.currentKey = DailyMealBusiness.getIdFromDate(new Date())
-    const list = (dailyMealData.dailyMealHistory[key]) ? dailyMealData.dailyMealHistory[key] : []
+    this.currentKey = DailyMealsBusiness.getIdFromDate(new Date())
+    const list = (dailyMealsData.dailyMealsHistory[key]) ? dailyMealsData.dailyMealsHistory[key] : []
     const energy = (item) => (item.energyPct * item.quantity / item.unitAmount).toFixed(0)
     const listItemLeftElement = <Icon name='alarm'/>
     const listItemRightElement = (item) => <Text>{energy(item)} kcal</Text>
     const listItem = (item, index) =>
       <ListItem divider dense 
-        //onLongPress={() => dailyMealActions.remove(key, index)}
-        onLongPress={() => dailyMealActions.trigger(DailyMealActions.REMOVE, key, index)}
+        //onLongPress={() => dailyMealsActions.remove(key, index)}
+        onLongPress={() => dailyMealsActions.trigger(DailyMealsActions.REMOVE, key, index)}
         centerElement={{primaryText:item.name, secondaryText:item.quantity + item.unit,}}
         leftElement={listItemLeftElement} rightElement={listItemRightElement(item)} 
       />
@@ -56,11 +56,11 @@ class ListDailyMealPage extends Component {
 
 export default connect(
   state => ({
-    dailyMealData: state.dailyMealReducer
+    dailyMealsData: state.dailyMealsReducer
     //pageData: state.listDailyMealPageReducer,
   }),
   (dispatch) => ({
-    dailyMealActions: bindActionCreators(DailyMealActions, dispatch),
+    dailyMealsActions: bindActionCreators(DailyMealsActions, dispatch),
     // pageActions: bindActionCreators(ListDailyMealPageActions, dispatch),
   })
-)(withTheme(ListDailyMealPage))
+)(withTheme(DailyMealsPage))

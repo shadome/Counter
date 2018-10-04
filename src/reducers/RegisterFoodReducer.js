@@ -1,5 +1,5 @@
-﻿'use strict';
-import * as types from "../actions/AddDailyMealPageActions";
+﻿'use strict'
+import * as types from '../actions/RegisterFoodActions'
 
 const initialState = {
   unit: 'g',
@@ -8,28 +8,28 @@ const initialState = {
   // isGeneralInformationVisible: true,
   // isMacronutrientsVisible: true,
   // isMicronutrientsVisible: true,
- };
+ }
 
-export default function addDailyMealPageReducer(state = initialState, action = {}) {
+export default function registerFoodReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case types.RESET: return {initialState};
-    case types.INPUT_NAME: return {...state, name:action.x[0]};
-    case types.SELECT_UNIT: return {...state, unit:action.x[0]};
+    case types.RESET: return {initialState}
+    case types.INPUT_NAME: return {...state, name:action.x[0]}
+    case types.SELECT_UNIT: return {...state, unit:action.x[0]}
     case types.SELECT_UNIT_VISIBLE_TOGGLE: {return {...state, isSelectUnitVisible:!state.isSelectUnitVisible}}
     // case types.GENERAL_INFORMATION_CARD_VISIBLE_TOGGLE: {return {...state, isGeneralInformationVisible:!state.isGeneralInformationVisible}}
     // case types.MACRONUTRIENTS_CARD_VISIBLE_TOGGLE: {return {...state, isMacronutrientsVisible:!state.isMacronutrientsVisible}}
     // case types.MICRONUTRIENTS_CARD_VISIBLE_TOGGLE: {return {...state, isMicronutrientsVisible:!state.isMicronutrientsVisible}}
-    case types.INPUT_QUANTITY: return {...state, quantity:action.x[0]};
+    case types.INPUT_QUANTITY: return {...state, quantity:action.x[0]}
     // macro
-    case types.INPUT_ENERGY_PCT: return {...state, energyPct:action.x[0]};
-    case types.INPUT_FAT_PCT: return {...state, fatPct:action.x[0]};
-    case types.INPUT_PROTEIN_PCT: return {...state, proteinPct:action.x[0]};
-    case types.INPUT_ETHANOL_PCT: return {...state, ethanolPct:action.x[0]};
-    case types.INPUT_CARBOHYDRATES_PCT: return {...state, carbohydratesPct:action.x[0]};
-    case types.INPUT_SATURATED_FAT_PCT: return {...state, carbohydratesPct:action.x[0]};
-    case types.INPUT_N9_FAT_PCT: return {...state, n9FatPct:action.x[0]};
-    case types.INPUT_N6_FAT_PCT: return {...state, n6FatPct:action.x[0]};
-    case types.INPUT_N3_FAT_PCT: return {...state, n3FatPct:action.x[0]};
+    case types.INPUT_ENERGY_PCT: return {...state, [action.type]:action.x[0], energyPct:action.x[0]}
+    case types.INPUT_FAT_PCT: return {...state, fatPct:action.x[0]}
+    case types.INPUT_PROTEIN_PCT: return {...state, proteinPct:action.x[0]}
+    case types.INPUT_ETHANOL_PCT: return {...state, ethanolPct:action.x[0]}
+    case types.INPUT_CARBOHYDRATES_PCT: return {...state, carbohydratesPct:action.x[0]}
+    case types.INPUT_SATURATED_FAT_PCT: return {...state, carbohydratesPct:action.x[0]}
+    case types.INPUT_N9_FAT_PCT: return {...state, n9FatPct:action.x[0]}
+    case types.INPUT_N6_FAT_PCT: return {...state, n6FatPct:action.x[0]}
+    case types.INPUT_N3_FAT_PCT: return {...state, n3FatPct:action.x[0]}
     // vitamins
     case types.INPUT_K_PHYLLOQUINONE_MENAQUINONES_PCT: return {...state, vitaminKPct:action.x[0]}
     case types.INPUT_E_TOCOPHEROLS_TOCOTRIENOLS_PCT: return {...state, vitaminEPct:action.x[0]}
@@ -61,6 +61,6 @@ export default function addDailyMealPageReducer(state = initialState, action = {
     case types.INPUT_CL_CHLORINE_PCT: return {...state, mineralClPct:action.x[0]}
     case types.INPUT_K_POTASSIUM_PCT: return {...state, mineralKPct:action.x[0]}
     // default
-    default: return state;
+    default: return state
   }
 }

@@ -1,14 +1,14 @@
-import {AppRegistry} from 'react-native';
-import React, {Component} from 'react';
+import {AppRegistry} from 'react-native'
+import React, {Component} from 'react'
 
-import Home from './pages/Home';
+import Home from './pages/Home'
 
 export default function index() {
   class Root extends Component {
     render() {
-      return (<Home/>);
+      return (<Home/>)
     }
   }
 
-  AppRegistry.registerComponent('Counter', () => Root);
+  AppRegistry.registerComponent('Counter', () => Root)
 }

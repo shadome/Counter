@@ -1,13 +1,13 @@
 import {createStackNavigator} from 'react-navigation'
 
-import ListDailyMealPage from './pages/ListDailyMealPage'
-import AddDailyMealPage from './pages/AddDailyMealPage'
+import DailyMealsPage from './pages/DailyMealsPage'
+import RegisterFoodPage from './pages/RegisterFoodPage'
 
 const AppNavigator = createStackNavigator({
-    list_daily_meal_page: ListDailyMealPage,
-    add_daily_meal_page: AddDailyMealPage,
+    DAILY_MEALS_PAGE: DailyMealsPage,
+    REGISTER_FOOD_PAGE: RegisterFoodPage,
   }, {
-    initialRouteName: 'list_daily_meal_page',
+    initialRouteName: 'DAILY_MEALS_PAGE',
     headerMode: 'none',
   })
 

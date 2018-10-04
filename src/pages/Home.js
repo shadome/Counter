@@ -1,7 +1,7 @@
 'use strict'
 import React, {Component} from 'react'
 import {NativeModules, StatusBar, View} from 'react-native'
-import {COLOR, ThemeContext, getTheme,} from '../components/react-native-material-ui'
+import {COLOR, ThemeContext, getTheme,} from '../../lib/react-native-material-ui'
 import MainTabNavigator from '../routes'
 import {createStore, applyMiddleware, combineReducers,} from 'redux'
 import {Provider,} from 'react-redux'

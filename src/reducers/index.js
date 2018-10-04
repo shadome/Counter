@@ -1,5 +1,5 @@
-'use strict';
-import dailyMealReducer from './DailyMealReducer';
-import addDailyMealPageReducer from './AddDailyMealPageReducer';
+'use strict'
+import dailyMealsReducer from './DailyMealsReducer'
+import registerFoodReducer from './RegisterFoodReducer'
 
-export {dailyMealReducer, addDailyMealPageReducer};
+export {dailyMealsReducer, registerFoodReducer}

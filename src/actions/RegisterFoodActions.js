@@ -1,4 +1,4 @@
-﻿'use strict';
+﻿'use strict'
 
 export function trigger(type, ...x) { 
   return {type, x}

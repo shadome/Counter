@@ -52,8 +52,8 @@ class CalendarPage extends Component {
         </Modal>
         <Toolbar centerElement='Add food' leftElement='arrow-back' onLeftElementPress={navigation.goBack} />
         <View style={{flexDirection:'row'}}>
-          <Button style={{container:{width:'50%'}}} primary text="Cancel" icon="clear" onPress={() => this.cancel(this.props)} />
-          <Button style={{container:{width:'50%'}}} primary text="Submit" icon="done" onPress={() => this.submit(this.props)} />
+          <Button style={{container:{width:'50%'}}} primary text='Cancel' icon='clear' onPress={() => this.cancel(this.props)} />
+          <Button style={{container:{width:'50%'}}} primary text='Submit' icon='done' onPress={() => this.submit(this.props)} />
         </View>
         <ScrollView>
           <Card style={{paddingLeft:16, paddingRight:16, paddingBottom:8, paddingTop:8}}>
@@ -71,7 +71,7 @@ class CalendarPage extends Component {
               />
             </View>
             <View style={{height:16}}/>
-            <Button primary text="select unit" onPress={() => pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT_VISIBLE_TOGGLE)}/>
+            <Button primary text='select unit' onPress={() => pageActions.trigger(AddDailyMealPageActions.SELECT_UNIT_VISIBLE_TOGGLE)}/>
           </Card>
           <Card style={{paddingLeft:16, paddingRight:16, paddingBottom:8, paddingTop:8}}>
             <Text style={theme.typography.subheading}>Macronutrients</Text>

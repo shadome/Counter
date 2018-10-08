@@ -56,6 +56,7 @@ export default function registerFoodReducer(state = initialState, action = {}) {
     case types.INPUT_VIT_B2_RIBOFLAVIN_PCT: return {...state, vitaminB2Pct:action.x[0]}
     case types.INPUT_VIT_B1_THIAMINE_PCT: return {...state, vitaminB1Pct:action.x[0]}
     case types.INPUT_VIT_A_CAROTENOIDS_PCT: return {...state, vitaminAPct:action.x[0]}
+    case types.INPUT_VIT_CHOLINE_PCT: return {...state, vitaminCholinePct:action.x[0]}
       // minerals
     case types.INPUT_MIN_CO_COBALT_PCT: return {...state, mineralCoPct:action.x[0]}
     case types.INPUT_MIN_SE_SELENIUM_PCT: return {...state, mineralSePct:action.x[0]}

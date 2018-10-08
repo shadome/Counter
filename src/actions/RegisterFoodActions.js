@@ -39,6 +39,7 @@ export const INPUT_VIT_B3_NIACIN_ETC_PCT = `${prefix}/INPUT_VIT_B3_NIACIN_ETC_PC
 export const INPUT_VIT_B2_RIBOFLAVIN_PCT = `${prefix}/INPUT_VIT_B2_RIBOFLAVIN_PCT`
 export const INPUT_VIT_B1_THIAMINE_PCT = `${prefix}/INPUT_VIT_B1_THIAMINE_PCT`
 export const INPUT_VIT_A_CAROTENOIDS_PCT = `${prefix}/INPUT_VIT_A_CAROTENOIDS_PCT`
+export const INPUT_VIT_CHOLINE_PCT = `${prefix}/INPUT_VIT_CHOLINE_PCT`
 // minerals: sel calcium cuivre fer iode magnésium manganèse phosphore potassium sélénium sodium zinc +fluoride
 export const INPUT_MIN_CO_COBALT_PCT = `${prefix}/INPUT_MIN_CO_COBALT_PCT`
 export const INPUT_MIN_SE_SELENIUM_PCT = `${prefix}/INPUT_MIN_SE_SELENIUM_PCT`

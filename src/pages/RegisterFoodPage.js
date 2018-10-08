@@ -11,6 +11,7 @@ import * as DailyMealsActions from '../actions/DailyMealsActions'
 import * as RegisterFoodActions from '../actions/RegisterFoodActions'
 import MainBottomNavigationBar from '../fragments/MainBottomNavigationBarFragment'
 import SelectUnitModal from '../fragments/SelectUnitModal'
+import { VitaminsData, MineralsData } from '../data/nutrients'
 
 class RegisterFoodPage extends Component {
   // constructor(props) {
@@ -85,6 +86,37 @@ class RegisterFoodPage extends Component {
         }
         if ((i+j) < list.length) {
           row.push(
+            <TextField key={`textfield_${title}_${list[i+j].item.name}`} keyboardType='numeric' containerStyle={{flex:1}}
+              label={list[i+j].item.name}
+              suffix={list[i+j].item.unit.name} 
+              value={list[i+j].value} 
+              onChangeText={(x) => pageActions.trigger(list[i+j].action, x)}
+            />
+          )
+        } else {
+          row.push(<View key={`placeholder_${title}_${j}`} style={{flex:1}}/>)
+        }
+      }
+      rows.push(<View key={`row_${title}_${i}`} style={Styles.row}>{row}</View>)
+    }
+    return (
+      <CollapsibleCard key={`card_${title}`} title={title} style={Styles.card}>
+        {headingData}
+        {rows}
+      </CollapsibleCard>
+    )
+  }
+  renderCard2(title, list, nbItemsPerRow = 2, headingData = undefined) {
+    const {pageActions} = this.props
+    let rows = []
+    for (let i = 0; i < list.length; i+=nbItemsPerRow) {
+      let row = []
+      for (let j = 0; j < nbItemsPerRow; j++) {
+        if (j !== 0) {
+          row.push(<View key={`space_${title}_${i+j}`} style={Styles.space}/>)
+        }
+        if ((i+j) < list.length) {
+          row.push(
             <TextField key={`textfield_${title}_${list[i+j].label}`} keyboardType='numeric' containerStyle={{flex:1}}
               label={list[i+j].label}
               suffix={list[i+j].suffix} 
@@ -132,43 +164,39 @@ class RegisterFoodPage extends Component {
       {label:'ω−3 (PUFA)', suffix:percentageSuffix, value:pageData.n3FatPct, action:RegisterFoodActions.INPUT_N3_FAT_PCT},
     ]
     const Vitamins = [
-      {label:'C (ascorbic acid)', suffix:percentageSuffix, value:pageData.vitaminCPct, action:RegisterFoodActions.INPUT_VIT_C_ASCORBIC_ACID_PCT},
-      {label:'D (cholecalciferol, ergocalciferol)', suffix:percentageSuffix, value:pageData.vitaminDPct, action:RegisterFoodActions.INPUT_VIT_D_CHOLECALCIFEROL_ERGOCALCIFEROL_PCT},
-      {label:'E (tocopherols, tocotrienols, ...)', suffix:percentageSuffix, value:pageData.vitaminEPct, action:RegisterFoodActions.INPUT_VIT_E_TOCOPHEROLS_TOCOTRIENOLS_PCT},
-      {label:'K (phylloquinone, ...)', suffix:percentageSuffix, value:pageData.vitaminKPct, action:RegisterFoodActions.INPUT_VIT_K_PHYLLOQUINONE_MENAQUINONES_PCT},
-      {label:'A equiv. (β-carotene)', suffix:percentageSuffix, value:pageData.vitaminAPct, action:RegisterFoodActions.INPUT_VIT_A_CAROTENOIDS_PCT},
-      {label:'B1 (thiamine)', suffix:percentageSuffix, value:pageData.vitaminB1Pct, action:RegisterFoodActions.INPUT_VIT_B1_THIAMINE_PCT},
-      {label:'B2 (riboflavin)', suffix:percentageSuffix, value:pageData.vitaminB2Pct, action:RegisterFoodActions.INPUT_VIT_B2_RIBOFLAVIN_PCT},
-      {label:'B3 (niacin, ...)', suffix:percentageSuffix, value:pageData.vitaminB3Pct, action:RegisterFoodActions.INPUT_VIT_B3_NIACIN_ETC_PCT},
-      {label:'B5 (pantothenic acid)', suffix:percentageSuffix, value:pageData.vitaminB5Pct, action:RegisterFoodActions.INPUT_VIT_B5_PANTOTHENIC_ACID_PCT},
-      {label:'B6 (pyridoxine, ...)' , suffix:percentageSuffix, value:pageData.vitaminB6Pct, action:RegisterFoodActions.INPUT_VIT_B6_PYRIDOXINE_ETC_PCT},
-      {label:'B7 (biotin)', suffix:percentageSuffix, value:pageData.vitaminB7Pct, action:RegisterFoodActions.INPUT_VIT_B7_BIOTIN_PCT},
-      {label:'B9 (folates)', suffix:percentageSuffix, value:pageData.vitaminB9Pct, action:RegisterFoodActions.INPUT_VIT_B9_FOLATES_PCT},
-      {label:'B12 (cyanocobalamin, ...)', suffix:percentageSuffix, value:pageData.vitaminB12Pct, action:RegisterFoodActions.INPUT_VIT_B12_CYANOCOBALAMIN_ETC_PCT},
+      {item:VitaminsData.C, value:pageData.vitaminCPct, action:RegisterFoodActions.INPUT_VIT_C_ASCORBIC_ACID_PCT},
+      {item:VitaminsData.D, value:pageData.vitaminDPct, action:RegisterFoodActions.INPUT_VIT_D_CHOLECALCIFEROL_ERGOCALCIFEROL_PCT},
+      {item:VitaminsData.E, value:pageData.vitaminEPct, action:RegisterFoodActions.INPUT_VIT_E_TOCOPHEROLS_TOCOTRIENOLS_PCT},
+      {item:VitaminsData.K, value:pageData.vitaminKPct, action:RegisterFoodActions.INPUT_VIT_K_PHYLLOQUINONE_MENAQUINONES_PCT},
+      {item:VitaminsData.Aequiv, value:pageData.vitaminAPct, action:RegisterFoodActions.INPUT_VIT_A_CAROTENOIDS_PCT},
+      {item:VitaminsData.B1, value:pageData.vitaminB1Pct, action:RegisterFoodActions.INPUT_VIT_B1_THIAMINE_PCT},
+      {item:VitaminsData.B2, value:pageData.vitaminB2Pct, action:RegisterFoodActions.INPUT_VIT_B2_RIBOFLAVIN_PCT},
+      {item:VitaminsData.B3, value:pageData.vitaminB3Pct, action:RegisterFoodActions.INPUT_VIT_B3_NIACIN_ETC_PCT},
+      {item:VitaminsData.B5, value:pageData.vitaminB5Pct, action:RegisterFoodActions.INPUT_VIT_B5_PANTOTHENIC_ACID_PCT},
+      {item:VitaminsData.B6, value:pageData.vitaminB6Pct, action:RegisterFoodActions.INPUT_VIT_B6_PYRIDOXINE_ETC_PCT},
+      {item:VitaminsData.B7, value:pageData.vitaminB7Pct, action:RegisterFoodActions.INPUT_VIT_B7_BIOTIN_PCT},
+      {item:VitaminsData.B9, value:pageData.vitaminB9Pct, action:RegisterFoodActions.INPUT_VIT_B9_FOLATES_PCT},
+      {item:VitaminsData.B12, value:pageData.vitaminB12Pct, action:RegisterFoodActions.INPUT_VIT_B12_CYANOCOBALAMIN_ETC_PCT},
+      {item:VitaminsData.Choline, value:pageData.vitaminCholinePct, action:RegisterFoodActions.INPUT_VIT_CHOLINE_PCT},
     ]
     const Minerals = [
-      {label:'Ca (calcium)', suffix:percentageSuffix, value:pageData.mineralCaPct, action:RegisterFoodActions.INPUT_MIN_CA_CALCIUM_PCT},
-      {label:'Cl (chlorine)', suffix:percentageSuffix, value:pageData.mineralClPct, action:RegisterFoodActions.INPUT_MIN_CL_CHLORINE_PCT},
-      {label:'Co (cobalt)', suffix:percentageSuffix, value:pageData.mineralCoPct, action:RegisterFoodActions.INPUT_MIN_CO_COBALT_PCT},
-      {label:'Cr (chromium)', suffix:percentageSuffix, value:pageData.mineralCrChromium, action:RegisterFoodActions.INPUT_MIN_CR_CHROMIUM_PCT},
-      {label:'Cu (copper)', suffix:percentageSuffix, value:pageData.mineralCuPct, action:RegisterFoodActions.INPUT_MIN_CU_COPPER_PCT},
-      {label:'Fe (iron)', suffix:percentageSuffix, value:pageData.mineralFePct, action:RegisterFoodActions.INPUT_MIN_FE_IRON_PCT},
-      {label:'I (iodin)', suffix:percentageSuffix, value:pageData.mineralIPct, action:RegisterFoodActions.INPUT_MIN_I_IODINE_PCT},
-      {label:'K (potassium)', suffix:percentageSuffix, value:pageData.mineralKPotassium, action:RegisterFoodActions.INPUT_MIN_K_POTASSIUM_PCT},
-      {label:'Mg (magnesium)', suffix:percentageSuffix, value:pageData.mineralMgPct, action:RegisterFoodActions.INPUT_MIN_MG_MAGNESIUM_PCT},
-      {label:'Mn (manganese)' , suffix:percentageSuffix, value:pageData.mineralMnPct, action:RegisterFoodActions.INPUT_MIN_MN_MANGANESE_PCT},
-      {label:'Mo (molybdenum)', suffix:percentageSuffix, value:pageData.mineralMoPct, action:RegisterFoodActions.INPUT_MIN_MO_MOLYBDENUM_PCT},
-      {label:'Na (Sodium)', suffix:percentageSuffix, value:pageData.mineralNaPct, action:RegisterFoodActions.INPUT_MIN_NA_SODIUM_PCT},
-      {label:'P (phosphorus)', suffix:percentageSuffix, value:pageData.mineralPPct, action:RegisterFoodActions.INPUT_MIN_P_PHOSPHORUS_PCT},
-      {label:'Se (selenium)', suffix:percentageSuffix, value:pageData.mineralSePct, action:RegisterFoodActions.INPUT_MIN_SE_SELENIUM_PCT},
-      {label:'Zn (zinc)', suffix:percentageSuffix, value:pageData.mineralZnPct, action:RegisterFoodActions.INPUT_MIN_ZN_ZINC_PCT},
+      {item:MineralsData.Ca, value:pageData.mineralCaPct, action:RegisterFoodActions.INPUT_MIN_CA_CALCIUM_PCT},
+      {item:MineralsData.Cl, value:pageData.mineralClPct, action:RegisterFoodActions.INPUT_MIN_CL_CHLORINE_PCT},
+      {item:MineralsData.Cr, value:pageData.mineralCrChromium, action:RegisterFoodActions.INPUT_MIN_CR_CHROMIUM_PCT},
+      {item:MineralsData.Cu, value:pageData.mineralCuPct, action:RegisterFoodActions.INPUT_MIN_CU_COPPER_PCT},
+      {item:MineralsData.Fe, value:pageData.mineralFePct, action:RegisterFoodActions.INPUT_MIN_FE_IRON_PCT},
+      {item:MineralsData.I, value:pageData.mineralIPct, action:RegisterFoodActions.INPUT_MIN_I_IODINE_PCT},
+      {item:MineralsData.K, value:pageData.mineralKPotassium, action:RegisterFoodActions.INPUT_MIN_K_POTASSIUM_PCT},
+      {item:MineralsData.Mg, value:pageData.mineralMgPct, action:RegisterFoodActions.INPUT_MIN_MG_MAGNESIUM_PCT},
+      {item:MineralsData.Mn, value:pageData.mineralMnPct, action:RegisterFoodActions.INPUT_MIN_MN_MANGANESE_PCT},
+      {item:MineralsData.Mo, value:pageData.mineralMoPct, action:RegisterFoodActions.INPUT_MIN_MO_MOLYBDENUM_PCT},
+      {item:MineralsData.Na, value:pageData.mineralNaPct, action:RegisterFoodActions.INPUT_MIN_NA_SODIUM_PCT},
+      {item:MineralsData.P, value:pageData.mineralPPct, action:RegisterFoodActions.INPUT_MIN_P_PHOSPHORUS_PCT},
+      {item:MineralsData.Se, value:pageData.mineralSePct, action:RegisterFoodActions.INPUT_MIN_SE_SELENIUM_PCT},
+      {item:MineralsData.Zn, value:pageData.mineralZnPct, action:RegisterFoodActions.INPUT_MIN_ZN_ZINC_PCT},
     ]
     return (
       <View style={{flex:1}}>
-        {/* {this.renderSelectUnitModal(this.props)} */}
-        {/* <View style={{flex:1,flexDirection:'column',alignItems:'center',justifyContent:'center', alignContent:'center', alignSelf:'center'}}>
-          <SelectUnitModal/>
-        </View> */}
         <Toolbar 
           centerElement='Register food' 
           leftElement='arrow-back' 
@@ -203,15 +231,9 @@ class RegisterFoodPage extends Component {
                 <Picker.Item label="grams" value="g" />
                 <Picker.Item label="milliliters" value="ml" />
               </Picker>
-              {/* <View style={{flex:1}}>
-                <Button primary raised
-                  text='select unit' 
-                  onPress={() => pageActions.trigger(RegisterFoodActions.SELECT_UNIT_VISIBLE_TOGGLE)}
-                />
-              </View> */}
             </View>
           </CollapsibleCard>
-          {this.renderCard('Macronutrients', Macronutrients, 2, 
+          {this.renderCard2(`Macronutrients (per ${pageData.unitAmount}${pageData.unit})`, Macronutrients, 2, 
             <View style={Styles.row}>
               <TextField keyboardType='numeric' containerStyle={{flex:1}}
                 label='Energy' 
@@ -229,12 +251,11 @@ class RegisterFoodPage extends Component {
               </View>
             </View>
           )}
-          {this.renderCard('Detailed macronutrients', DetailedMacro)}
-          {this.renderCard('Vitamins', Vitamins)}
-          {this.renderCard('Minerals', Minerals)}
+          {this.renderCard2(`Detailed macronutrients (per ${pageData.unitAmount}${pageData.unit})`, DetailedMacro)}
+          {this.renderCard(`Vitamins (per ${pageData.unitAmount}${pageData.unit})`, Vitamins, 4)}
+          {this.renderCard(`Minerals (per ${pageData.unitAmount}${pageData.unit})`, Minerals, 4)}
           <View style={{height:8}}/>
         </ScrollView>
-        {/* {!isKeyboardVisible && <MainBottomNavigationBar navigation={navigation} index='1'/>} */}
        </View>
     )
   }

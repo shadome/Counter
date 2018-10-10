@@ -1,10 +1,10 @@
 ﻿'use strict'
 import * as types from '../actions/RegisterFoodActions'
-
+import {Alert} from 'react-native'
 const initialState = {
   unit: 'g',
   unitAmount: 100,
-  isSelectUnitVisible: false,
+  // isSelectUnitVisible: false,
   // isGeneralInformationVisible: true,
   // isMacronutrientsVisible: true,
   // isMicronutrientsVisible: true,
@@ -14,8 +14,8 @@ export default function registerFoodReducer(state = initialState, action = {}) {
   switch (action.type) {
     case types.RESET: return {initialState}
     case types.INPUT_NAME: return {...state, name:action.x[0]}
-    case types.SELECT_UNIT: return {...state, unit:action.x[0]}
-    case types.SELECT_UNIT_VISIBLE_TOGGLE: return {...state, isSelectUnitVisible:!state.isSelectUnitVisible}
+    // case types.SELECT_UNIT: return {...state, unit:action.x[0]}
+    // case types.SELECT_UNIT_VISIBLE_TOGGLE: return {...state, isSelectUnitVisible:!state.isSelectUnitVisible}
     case types.CALCULATE_ENERGY_PCT: {
       let total = 0
       if (state.fatPct !== undefined)
@@ -31,7 +31,7 @@ export default function registerFoodReducer(state = initialState, action = {}) {
     // case types.GENERAL_INFORMATION_CARD_VISIBLE_TOGGLE: {return {...state, isGeneralInformationVisible:!state.isGeneralInformationVisible}}
     // case types.MACRONUTRIENTS_CARD_VISIBLE_TOGGLE: {return {...state, isMacronutrientsVisible:!state.isMacronutrientsVisible}}
     // case types.MICRONUTRIENTS_CARD_VISIBLE_TOGGLE: {return {...state, isMicronutrientsVisible:!state.isMicronutrientsVisible}}
-    case types.INPUT_QUANTITY: return {...state, quantity:action.x[0]}
+    // case types.INPUT_QUANTITY: return {...state, quantity:action.x[0]}
     // macro
     case types.INPUT_ENERGY_PCT: return {...state, energyPct:action.x[0]}
     case types.INPUT_FAT_PCT: return {...state, fatPct:action.x[0]}

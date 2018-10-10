@@ -1,17 +1,17 @@
 'use strict'
 import React, {Component} from 'react'
-import {StyleSheet, View, Text, ScrollView, Modal, TouchableWithoutFeedback, Keyboard, Picker} from 'react-native'
+import {StyleSheet, View, Text, ScrollView, Modal, TouchableWithoutFeedback, Keyboard, Picker, Alert} from 'react-native'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Toolbar, Icon, IconToggle, Card, RadioButton, Button, Dialog, withTheme,} from '../../lib/react-native-material-ui'
 import TextField from '../../lib/react-native-material-textfield/adapted'
 import {CollapsibleCard} from '../../lib/collapsiblecard'
-import DailyMealsBusiness from '../business/DailyMealsBusiness'
-import * as DailyMealsActions from '../actions/DailyMealsActions'
+// import DailyMealsBusiness from '../business/DailyMealsBusiness'
+import * as DictionaryActions from '../actions/DictionaryActions'
 import * as RegisterFoodActions from '../actions/RegisterFoodActions'
 import MainBottomNavigationBar from '../fragments/MainBottomNavigationBarFragment'
 import SelectUnitModal from '../fragments/SelectUnitModal'
-import { VitaminsData, MineralsData } from '../data/nutrients'
+import { VitaminsData, MineralsData, MacronutrientsData } from '../data/nutrients'
 
 class RegisterFoodPage extends Component {
   // constructor(props) {
@@ -36,8 +36,14 @@ class RegisterFoodPage extends Component {
     navigation.goBack()
   }
   submit(props) {
-    const {pageData, pageActions, dailyMealsActions,} = props
-    dailyMealsActions.trigger(DailyMealsActions.ADD, DailyMealsBusiness.getIdFromDate(new Date()), pageData)
+    const {pageData, pageActions, dictionaryActions, dictionaryData} = props
+    dictionaryActions.trigger(DictionaryActions.ADD, {id:'test',data:'toto'})
+    // dictionaryActions.trigger(DictionaryActions.REMOVE, 'test')
+    // dictionaryActions.trigger(DictionaryActions.REMOVE, {id:'test', data:'tata'})
+    // Alert.alert(dictionaryData.test)
+    // Alert.alert('test',dictionaryData['test'].id)
+    // Alert.alert('test55',dictionaryData.data.test.id)
+    // dailyMealsActions.trigger(DailyMealsActions.ADD, DailyMealsBusiness.getIdFromDate(new Date()), pageData)
     this.cancel(props)
   }
   // renderSelectUnitModal(props) {
@@ -106,37 +112,37 @@ class RegisterFoodPage extends Component {
       </CollapsibleCard>
     )
   }
-  renderCard2(title, list, nbItemsPerRow = 2, headingData = undefined) {
-    const {pageActions} = this.props
-    let rows = []
-    for (let i = 0; i < list.length; i+=nbItemsPerRow) {
-      let row = []
-      for (let j = 0; j < nbItemsPerRow; j++) {
-        if (j !== 0) {
-          row.push(<View key={`space_${title}_${i+j}`} style={Styles.space}/>)
-        }
-        if ((i+j) < list.length) {
-          row.push(
-            <TextField key={`textfield_${title}_${list[i+j].label}`} keyboardType='numeric' containerStyle={{flex:1}}
-              label={list[i+j].label}
-              suffix={list[i+j].suffix} 
-              value={list[i+j].value} 
-              onChangeText={(x) => pageActions.trigger(list[i+j].action, x)}
-            />
-          )
-        } else {
-          row.push(<View key={`placeholder_${title}_${j}`} style={{flex:1}}/>)
-        }
-      }
-      rows.push(<View key={`row_${title}_${i}`} style={Styles.row}>{row}</View>)
-    }
-    return (
-      <CollapsibleCard key={`card_${title}`} title={title} style={Styles.card}>
-        {headingData}
-        {rows}
-      </CollapsibleCard>
-    )
-  }
+  // renderCard2(title, list, nbItemsPerRow = 2, headingData = undefined) {
+  //   const {pageActions} = this.props
+  //   let rows = []
+  //   for (let i = 0; i < list.length; i+=nbItemsPerRow) {
+  //     let row = []
+  //     for (let j = 0; j < nbItemsPerRow; j++) {
+  //       if (j !== 0) {
+  //         row.push(<View key={`space_${title}_${i+j}`} style={Styles.space}/>)
+  //       }
+  //       if ((i+j) < list.length) {
+  //         row.push(
+  //           <TextField key={`textfield_${title}_${list[i+j].label}`} keyboardType='numeric' containerStyle={{flex:1}}
+  //             label={list[i+j].label}
+  //             suffix={list[i+j].suffix} 
+  //             value={list[i+j].value} 
+  //             onChangeText={(x) => pageActions.trigger(list[i+j].action, x)}
+  //           />
+  //         )
+  //       } else {
+  //         row.push(<View key={`placeholder_${title}_${j}`} style={{flex:1}}/>)
+  //       }
+  //     }
+  //     rows.push(<View key={`row_${title}_${i}`} style={Styles.row}>{row}</View>)
+  //   }
+  //   return (
+  //     <CollapsibleCard key={`card_${title}`} title={title} style={Styles.card}>
+  //       {headingData}
+  //       {rows}
+  //     </CollapsibleCard>
+  //   )
+  // }
   render() {
     const {pageData, pageActions, navigation, theme} = this.props
     // let {isKeyboardVisible} = this.state
@@ -152,16 +158,16 @@ class RegisterFoodPage extends Component {
           }}
     */
     const Macronutrients = [
-      {label:'Proteins', suffix:percentageSuffix, value:pageData.proteinPct, action:RegisterFoodActions.INPUT_PROTEIN_PCT},
-      {label:'Carbohydrates', suffix:percentageSuffix, value:pageData.carbohydratesPct, action:RegisterFoodActions.INPUT_CARBOHYDRATES_PCT},
-      {label:'Fat', suffix:percentageSuffix, value:pageData.fatPct, action:RegisterFoodActions.INPUT_FAT_PCT},
-      {label:'Ethanol', suffix:percentageSuffix, value:pageData.ethanolPct, action:RegisterFoodActions.INPUT_ETHANOL_PCT},
+      {item:MacronutrientsData.protein, value:pageData.proteinPct, action:RegisterFoodActions.INPUT_PROTEIN_PCT},
+      {item:MacronutrientsData.carbohydrate, value:pageData.carbohydratesPct, action:RegisterFoodActions.INPUT_CARBOHYDRATES_PCT},
+      {item:MacronutrientsData.fat, value:pageData.fatPct, action:RegisterFoodActions.INPUT_FAT_PCT},
+      {item:MacronutrientsData.ethanol, value:pageData.ethanolPct, action:RegisterFoodActions.INPUT_ETHANOL_PCT},
     ]
     const DetailedMacro = [
-      {label:'Saturated fat', suffix:percentageSuffix, value:pageData.saturatedFatPct, action:RegisterFoodActions.INPUT_SATURATED_FAT_PCT},
-      {label:'ω−9 (MUFA)', suffix:percentageSuffix, value:pageData.n9FatPct, action:RegisterFoodActions.INPUT_N9_FAT_PCT},
-      {label:'ω−6 (PUFA)', suffix:percentageSuffix, value:pageData.n6FatPct, action:RegisterFoodActions.INPUT_N6_FAT_PCT},
-      {label:'ω−3 (PUFA)', suffix:percentageSuffix, value:pageData.n3FatPct, action:RegisterFoodActions.INPUT_N3_FAT_PCT},
+      {item:MacronutrientsData.fat.saturated, value:pageData.saturatedFatPct, action:RegisterFoodActions.INPUT_SATURATED_FAT_PCT},
+      {item:MacronutrientsData.fat.monounsaturated.n9, value:pageData.n9FatPct, action:RegisterFoodActions.INPUT_N9_FAT_PCT},
+      {item:MacronutrientsData.fat.polyunsaturated.n6, value:pageData.n6FatPct, action:RegisterFoodActions.INPUT_N6_FAT_PCT},
+      {item:MacronutrientsData.fat.polyunsaturated.n3, value:pageData.n3FatPct, action:RegisterFoodActions.INPUT_N3_FAT_PCT},
     ]
     const Vitamins = [
       {item:VitaminsData.C, value:pageData.vitaminCPct, action:RegisterFoodActions.INPUT_VIT_C_ASCORBIC_ACID_PCT},
@@ -177,7 +183,7 @@ class RegisterFoodPage extends Component {
       {item:VitaminsData.B7, value:pageData.vitaminB7Pct, action:RegisterFoodActions.INPUT_VIT_B7_BIOTIN_PCT},
       {item:VitaminsData.B9, value:pageData.vitaminB9Pct, action:RegisterFoodActions.INPUT_VIT_B9_FOLATES_PCT},
       {item:VitaminsData.B12, value:pageData.vitaminB12Pct, action:RegisterFoodActions.INPUT_VIT_B12_CYANOCOBALAMIN_ETC_PCT},
-      {item:VitaminsData.Choline, value:pageData.vitaminCholinePct, action:RegisterFoodActions.INPUT_VIT_CHOLINE_PCT},
+      {item:VitaminsData.choline, value:pageData.vitaminCholinePct, action:RegisterFoodActions.INPUT_VIT_CHOLINE_PCT},
     ]
     const Minerals = [
       {item:MineralsData.Ca, value:pageData.mineralCaPct, action:RegisterFoodActions.INPUT_MIN_CA_CALCIUM_PCT},
@@ -216,7 +222,7 @@ class RegisterFoodPage extends Component {
               value={pageData.name} 
               onChangeText={(x) => pageActions.trigger(RegisterFoodActions.INPUT_NAME, x)}
             />
-            <View style={Styles.row}>
+            {/* <View style={Styles.row}>
               <TextField keyboardType='numeric' containerStyle={{flex:1}}
                 label='Quantity' 
                 suffix={pageData.unit} 
@@ -231,9 +237,9 @@ class RegisterFoodPage extends Component {
                 <Picker.Item label="grams" value="g" />
                 <Picker.Item label="milliliters" value="ml" />
               </Picker>
-            </View>
+            </View> */}
           </CollapsibleCard>
-          {this.renderCard2(`Macronutrients (per ${pageData.unitAmount}${pageData.unit})`, Macronutrients, 2, 
+          {this.renderCard(`Macronutrients (per ${pageData.unitAmount}${pageData.unit})`, Macronutrients, 2, 
             <View style={Styles.row}>
               <TextField keyboardType='numeric' containerStyle={{flex:1}}
                 label='Energy' 
@@ -251,7 +257,7 @@ class RegisterFoodPage extends Component {
               </View>
             </View>
           )}
-          {this.renderCard2(`Detailed macronutrients (per ${pageData.unitAmount}${pageData.unit})`, DetailedMacro)}
+          {this.renderCard(`Detailed macronutrients (per ${pageData.unitAmount}${pageData.unit})`, DetailedMacro)}
           {this.renderCard(`Vitamins (per ${pageData.unitAmount}${pageData.unit})`, Vitamins, 4)}
           {this.renderCard(`Minerals (per ${pageData.unitAmount}${pageData.unit})`, Minerals, 4)}
           <View style={{height:8}}/>
@@ -278,9 +284,11 @@ const Styles = StyleSheet.create({
 export default connect(
   state => ({
     pageData: state.registerFoodReducer,
+    dictionaryData: state.dictionaryReducer,
   }),
   (dispatch) => ({
     pageActions: bindActionCreators(RegisterFoodActions, dispatch),
-    dailysMealsActions: bindActionCreators(DailyMealsActions, dispatch),
+    // dailysMealsActions: bindActionCreators(DailyMealsActions, dispatch),
+    dictionaryActions: bindActionCreators(DictionaryActions, dispatch),
   })
 )(withTheme(RegisterFoodPage))

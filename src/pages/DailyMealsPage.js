@@ -15,7 +15,7 @@ class DailyMealsPage extends Component {
   }
   //https://github.com/wix/react-native-calendars
   render() {
-    const {dailyMealsData, dailyMealsActions, navigation, theme,} = this.props
+    const {dailyMealsData, dailyMealsActions, dictionaryData, navigation, theme,} = this.props
     const key = this.currentKey
     this.currentKey = DailyMealsBusiness.getIdFromDate(new Date())
     const list = (dailyMealsData.dailyMealsHistory[key]) ? dailyMealsData.dailyMealsHistory[key] : []
@@ -56,7 +56,8 @@ class DailyMealsPage extends Component {
 
 export default connect(
   state => ({
-    dailyMealsData: state.dailyMealsReducer
+    dailyMealsData: state.dailyMealsReducer,
+    dictionaryData: state.dictionaryReducer,
     //pageData: state.listDailyMealPageReducer,
   }),
   (dispatch) => ({

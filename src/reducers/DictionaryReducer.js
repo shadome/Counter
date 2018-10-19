@@ -1,27 +1,23 @@
 'use strict'
-import * as actions from '../actions/DictionaryActions'
+import * as types from '../actions/DictionaryActions'
 import {Alert} from 'react-native'
 
 const initialState = {
-  data:{},
+  data:[],
 }
 
 export default function dictionaryReducer(state = initialState, action = {}) {
+  const { payload } = action
   switch (action.type) {
-    case actions.ADD: 
-    return {
-      ...state, 
-      data: {
-        ...state.data,
-        [action.x[0].id]: action.x[0]
-      }
-    }
-    case actions.REMOVE: {
-      let tmp = {...(state.data)}
-      delete tmp[action.x[0].id || action.x[0]]
-      return {...state, data:tmp}
-    }
+    case types.ADD:
+      return { ...state, data:[...state.data, ...payload]}
+    case types.REMOVE:
+      return {...state, data:state.data.filter(x => x.name !== payload.name)}
+    case types.RESET:
+      Alert.alert('Dictionary reset', 'Technical: the dictionary has been reset.')
+      return {...initialState}
     // default
-    default: return state
+    default: 
+      return state
   }
 }

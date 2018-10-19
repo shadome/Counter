@@ -35,7 +35,8 @@ class DailyMealsPage extends Component {
         {list === undefined || list.length < 1 ? 
           <View style={{flex:1, justifyContent:'center', alignItems:'center',}}>
             <View style={{backgroundColor:'#cccccc', height:150, width:150, borderRadius:150, alignItems:'center', justifyContent:'center'}}>
-            <Icon iconSet='FontAwesome' name='folder-open-o' text='empty' style={{marginLeft:15, fontSize:100}}/>
+            {/* <Icon iconSet='FontAwesome' name='folder-open-o' text='empty' style={{marginLeft:15, fontSize:100}}/> */}
+              <Icon iconSet='FontAwesome' name='ellipsis-h' style={{marginTop:30, fontSize:100}}/>
             </View>
           </View>  
         :

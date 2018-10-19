@@ -21,7 +21,11 @@ class MainBottomNavigationBarFragment extends Component {
           onPress={index !== '1' ? () => navigation.navigate('REGISTER_FOOD_PAGE') : undefined}
           icon='create'
         />
-        <BottomNavigation.Action key='2' label='Calendar'
+        <BottomNavigation.Action key='2' label='Dictionary' 
+          onPress={index !== '2' ? () => navigation.navigate('LIST_DICTIONARY_PAGE') : undefined}
+          iconSet='FontAwesome' icon='book'
+        />
+        <BottomNavigation.Action key='3' label='Calendar'
           onPress={() => null}
           icon='event-note'
         />

@@ -9,7 +9,6 @@ import * as DictionaryActions from '../actions/DictionaryActions'
 import {createIconSetFromIcoMoon} from 'react-native-vector-icons'
 import config from './../../resources/fonts/Food.json'
 
-
 class ListDictionaryPage extends Component {
   render() {
     const {dictionaryData, navigation, theme} = this.props

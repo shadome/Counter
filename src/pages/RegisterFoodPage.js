@@ -9,21 +9,14 @@ import {CollapsibleCard} from '../../lib/collapsiblecard'
 import * as DictionaryActions from '../actions/DictionaryActions'
 import * as RegisterFoodActions from '../actions/RegisterFoodActions'
 import MainBottomNavigationBar from '../fragments/MainBottomNavigationBarFragment'
-import SelectUnitModal from '../fragments/SelectUnitModal'
 import { VitaminsData, MineralsData, MacronutrientsData } from '../data/Nutrients'
 import * as FoodCategories from '../data/FoodCategories'
 
 class RegisterFoodPage extends Component {
   submit() {
     const {navigation, pageData, pageActions, dictionaryActions, dictionaryData} = this.props
-    const clone = {...pageData, id:pageData.name}
-    // dictionaryActions.trigger(DictionaryActions.RESET)
-    // dictionaryActions.trigger(DictionaryActions.ADD, clone)
-    // this.props.dictionaryActions.trigger(DictionaryActions.ADD, {name:'test5'})
-    // pageActions.trigger(RegisterFoodActions.RESET)
+    dictionaryActions.add({...pageData})
     pageActions.reset()
-    // let action = RegisterFoodActions.trigger(RegisterFoodActions.RESET)
-    // this.props.store.dispatch(action)
     navigation.goBack()
   }
   renderCard(title, list, nbItemsPerRow = 2, headingData = undefined) {

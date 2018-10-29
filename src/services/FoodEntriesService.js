@@ -13,7 +13,7 @@ export function searchEntries(string = '') {
   }, [])
 }
 
-export function getEntry(code) {
-  return FoodEntriesEn.find(x => x.alim_code === code)
+export function getEntry(id) {
+  return FoodEntriesEn.find(x => x.alim_code === id)
 }
     

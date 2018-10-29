@@ -1,5 +1,7 @@
 ﻿'use strict'
 
+import * as FoodEntriesService from '../services/FoodEntriesService'
+
 export const reset = () => ({
   type: RESET,
 })
@@ -166,9 +168,69 @@ export const inputMinZnPct = (minZnPct = undefined) => ({
   type: INPUT_MIN_ZN_ZINC_PCT,
   payload: { minZnPct }
 })
+export function init(foodId) {
+  const food = FoodEntriesService.getEntry(foodId)
+  const fatN3 = 
+    Number(food["FA 18:3 c9 - c12 - c15 (n3) (g/100g)"]) || 0 + 
+    Number(food["FA 20:5 5c - 8c - 11c - 14c - 17c (n3) EPA (g/100g)"]) || 0 + 
+    Number(food["FA 22:6 4c - 7c - 10c - 13c - 16c - 19c (n3) DHA (g/100g)"]) || 0
+  const fatN6 = 
+    Number(food["FA 18:2 9c - 12c (n6) (g/100g)"]) || 0 + 
+    Number(food["FA 20:4 5c - 8c - 11c - 14c (n6) (g/100g)"]) || 0
+  const vitK =
+    Number(food["Vitamin K1 (mcg/100g)"]) || 0 +
+    Number(food["Vitamin K2 (mcg/100g)"]) || 0
+  return {
+    type: INIT,
+    payload: { 
+      name: food["alim_nom_eng"],
+      // category: food[],
+      energyPct: (Number(food["Energy (kcal/100g)"]) || 0).toString(),
+      fibresPct: (Number(food["Fibres (g/100g)"]) || 0).toString(),
+      proteinPct: (Number(food["Protein (g/100g)"]) || 0).toString(),
+      carbohydratesPct: (Number(food["Carbohydrate (g/100g)"]) || 0).toString(),
+      ethanolPct: (Number(food["Alcohol (g/100g)"]) || 0).toString(),
+      fatPct: (Number(food["Fat (g/100g)"]) || 0).toString(),
+      fatSaturatedPct: (Number(food["FA saturated (g/100g)"]) || 0).toString(),
+      fatN3Pct:fatN3.toString(),
+      fatN6Pct:fatN6.toString(),
+      fatN9Pct: (Number(food["FA 18:1 n9 cis (g/100g)"]) || 0).toString(),
+      vitAEquiv: (Number(food["Betacarotene (mcg/100g)"]) || 0).toString(),
+      vitCPct: (Number(food["Vitamin C (mg/100g)"]) || 0).toString(),
+      vitDPct: (Number(food["Vitamin D (mcg/100g)"]) || 0).toString(),
+      vitEPct: (Number(food["Vitamin E (mg/100g)"]) || 0).toString(),
+      vitKPct:vitK.toString(),
+      // vitCholinePct: Number(food[],
+      vitB1Pct: (Number(food["Vitamin B1 or Thiamin (mg/100g)"]) || 0).toString(),
+      vitB2Pct: (Number(food["Vitamin B2 or Riboflavin (mg/100g)"]) || 0).toString(),
+      vitB3Pct: (Number(food["Vitamin B3 or Niacin (mg/100g)"]) || 0).toString(),
+      vitB5Pct: (Number(food["Vitamin B5 or Pantothenic acid (mg/100g)"]) || 0).toString(),
+      vitB6Pct: (Number(food["Vitamin B6 (mg/100g)"]) || 0).toString(),
+      // vitB7Pct: Number(food[],
+      vitB9Pct: (Number(food["Vitamin B9 or Folate (mcg/100g)"]) || 0).toString(),
+      vitB12Pct: (Number(food["Vitamin B12 (mcg/100g)"]) || 0).toString(),
+      minCaPct: (Number(food["Calcium (mg/100g)"]) || 0).toString(),
+      minClPct: (Number(food["Chloride (mg/100g)"]) || 0).toString(),
+      // minCoPct: Number(food[],
+      // minCrPct: Number(food[],
+      minCuPct: (Number(food["Copper (mg/100g)"]) || 0).toString(),
+      minFePct: (Number(food["Iron (mg/100g)"]) || 0).toString(),
+      minIPct: (Number(food["Iodine (mcg/100g)"]) || 0).toString(),
+      minKPct: (Number(food["Potassium (mg/100g)"]) || 0).toString(),
+      minMgPct: (Number(food["Magnesium (mg/100g)"]) || 0).toString(),
+      minMnPct: (Number(food["Manganese (mg/100g)"]) || 0).toString(),
+      // minMoPct: Number(food[],
+      minNaPct: (Number(food["Sodium (mg/100g)"]) || 0).toString(),
+      minPPct: (Number(food["Phosphorus (mg/100g)"]) || 0).toString(),
+      minSePct: (Number(food["Selenium (mcg/100g)"]) || 0).toString(),
+      minZnPct: (Number(food["Zinc (mg/100g)"]) || 0).toString(),
+    }
+  }
+}
 
 const PREFIX = 'REGISTER_FOOD_ACTIONS' // must be unique
 export const RESET = `${PREFIX}-RESET`
+export const INIT = `${PREFIX}-INIT`
 export const INPUT_NAME = `${PREFIX}-INPUT_NAME`
 export const INPUT_CATEGORY = `${PREFIX}-INPUT_CATEGORY`
 export const CALCULATE_ENERGY_PCT = `${PREFIX}-CALCULATE_ENERGY_PCT`

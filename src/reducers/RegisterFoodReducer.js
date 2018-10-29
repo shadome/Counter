@@ -21,6 +21,7 @@ export default function registerFoodReducer(state = initialState, action = {}) {
       total += 7 * state.ethanolPct || 0
       return {...state, energyPct:total.toString()}
     }
+    case types.INIT: 
     case types.INPUT_NAME:// return {...state, name:action.x[0]}
     case types.INPUT_CATEGORY:// return {...state, category:action.x[0]}
     // macro

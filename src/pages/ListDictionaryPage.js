@@ -47,7 +47,9 @@ class ListDictionaryPage extends Component {
             </ScrollView>
         }
         <ActionButton style={{container:{bottom:50, backgroundColor:theme.palette.primaryColor}}} 
-        onPress={() => this.props.dictionaryActions.trigger(DictionaryActions.ADD, {name:'test3'})}
+        onPress={() => navigation.navigate('SEARCH_FOOD_PAGE')
+        //this.props.dictionaryActions.trigger(DictionaryActions.ADD, {name:'test3'})
+        }
         />
         <MainBottomNavigationBar navigation={navigation} index='2'/>
       </View>

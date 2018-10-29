@@ -91,36 +91,36 @@ class RegisterFoodPage extends Component {
       {item:MacronutrientsData.fat.polyunsaturated.n3, value:pageData.n3FatPct, action:pageActions.inputFatN3Pct},
     ]
     const Vitamins = [
-      {item:VitaminsData.C, value:pageData.vitaminCPct, action:pageActions.inputVitCPct},
-      {item:VitaminsData.D, value:pageData.vitaminDPct, action:pageActions.inputVitDPct},
-      {item:VitaminsData.E, value:pageData.vitaminEPct, action:pageActions.inputVitEPct},
-      {item:VitaminsData.K, value:pageData.vitaminKPct, action:pageActions.inputVitKPct},
-      {item:VitaminsData.Aequiv, value:pageData.vitaminAPct, action:pageActions.inputVitAEquivPct},
-      {item:VitaminsData.B1, value:pageData.vitaminB1Pct, action:pageActions.inputVitB1Pct},
-      {item:VitaminsData.B2, value:pageData.vitaminB2Pct, action:pageActions.inputVitB2Pct},
-      {item:VitaminsData.B3, value:pageData.vitaminB3Pct, action:pageActions.inputVitB3Pct},
-      {item:VitaminsData.B5, value:pageData.vitaminB5Pct, action:pageActions.inputVitB5Pct},
-      {item:VitaminsData.B6, value:pageData.vitaminB6Pct, action:pageActions.inputVitB6Pct},
-      {item:VitaminsData.B7, value:pageData.vitaminB7Pct, action:pageActions.inputVitB7Pct},
-      {item:VitaminsData.B9, value:pageData.vitaminB9Pct, action:pageActions.inputVitB9Pct},
-      {item:VitaminsData.B12, value:pageData.vitaminB12Pct, action:pageActions.inputVitB12Pct},
-      {item:VitaminsData.choline, value:pageData.vitaminCholinePct, action:pageActions.inputVitCholinePct},
+      {item:VitaminsData.C, value:pageData.vitCPct, action:pageActions.inputVitCPct},
+      {item:VitaminsData.D, value:pageData.vitDPct, action:pageActions.inputVitDPct},
+      {item:VitaminsData.E, value:pageData.vitEPct, action:pageActions.inputVitEPct},
+      {item:VitaminsData.K, value:pageData.vitKPct, action:pageActions.inputVitKPct},
+      {item:VitaminsData.Aequiv, value:pageData.vitAPct, action:pageActions.inputVitAEquivPct},
+      {item:VitaminsData.B1, value:pageData.vitB1Pct, action:pageActions.inputVitB1Pct},
+      {item:VitaminsData.B2, value:pageData.vitB2Pct, action:pageActions.inputVitB2Pct},
+      {item:VitaminsData.B3, value:pageData.vitB3Pct, action:pageActions.inputVitB3Pct},
+      {item:VitaminsData.B5, value:pageData.vitB5Pct, action:pageActions.inputVitB5Pct},
+      {item:VitaminsData.B6, value:pageData.vitB6Pct, action:pageActions.inputVitB6Pct},
+      {item:VitaminsData.B7, value:pageData.vitB7Pct, action:pageActions.inputVitB7Pct},
+      {item:VitaminsData.B9, value:pageData.vitB9Pct, action:pageActions.inputVitB9Pct},
+      {item:VitaminsData.B12, value:pageData.vitB12Pct, action:pageActions.inputVitB12Pct},
+      {item:VitaminsData.choline, value:pageData.vitCholinePct, action:pageActions.inputVitCholinePct},
     ]
     const Minerals = [
-      {item:MineralsData.Ca, value:pageData.mineralCaPct, action:pageActions.inputMinCaPct},
-      {item:MineralsData.Cl, value:pageData.mineralClPct, action:pageActions.inputMinClPct},
-      {item:MineralsData.Cr, value:pageData.mineralCrChromium, action:pageActions.inputMinCrPct},
-      {item:MineralsData.Cu, value:pageData.mineralCuPct, action:pageActions.inputMinCuPct},
-      {item:MineralsData.Fe, value:pageData.mineralFePct, action:pageActions.inputMinFePct},
-      {item:MineralsData.I, value:pageData.mineralIPct, action:pageActions.inputMinIPct},
-      {item:MineralsData.K, value:pageData.mineralKPotassium, action:pageActions.inputMinKPct},
-      {item:MineralsData.Mg, value:pageData.mineralMgPct, action:pageActions.inputMinMgPct},
-      {item:MineralsData.Mn, value:pageData.mineralMnPct, action:pageActions.inputMinMnPct},
-      {item:MineralsData.Mo, value:pageData.mineralMoPct, action:pageActions.inputMinMoPct},
-      {item:MineralsData.Na, value:pageData.mineralNaPct, action:pageActions.inputMinNaPct},
-      {item:MineralsData.P, value:pageData.mineralPPct, action:pageActions.inputMinPPct},
-      {item:MineralsData.Se, value:pageData.mineralSePct, action:pageActions.inputMinSePct},
-      {item:MineralsData.Zn, value:pageData.mineralZnPct, action:pageActions.inputMinZnPct},
+      {item:MineralsData.Ca, value:pageData.minCaPct, action:pageActions.inputMinCaPct},
+      {item:MineralsData.Cl, value:pageData.minClPct, action:pageActions.inputMinClPct},
+      {item:MineralsData.Cr, value:pageData.minCrChromium, action:pageActions.inputMinCrPct},
+      {item:MineralsData.Cu, value:pageData.minCuPct, action:pageActions.inputMinCuPct},
+      {item:MineralsData.Fe, value:pageData.minFePct, action:pageActions.inputMinFePct},
+      {item:MineralsData.I, value:pageData.minIPct, action:pageActions.inputMinIPct},
+      {item:MineralsData.K, value:pageData.minKPct, action:pageActions.inputMinKPct},
+      {item:MineralsData.Mg, value:pageData.minMgPct, action:pageActions.inputMinMgPct},
+      {item:MineralsData.Mn, value:pageData.minMnPct, action:pageActions.inputMinMnPct},
+      {item:MineralsData.Mo, value:pageData.minMoPct, action:pageActions.inputMinMoPct},
+      {item:MineralsData.Na, value:pageData.minNaPct, action:pageActions.inputMinNaPct},
+      {item:MineralsData.P, value:pageData.minPPct, action:pageActions.inputMinPPct},
+      {item:MineralsData.Se, value:pageData.minSePct, action:pageActions.inputMinSePct},
+      {item:MineralsData.Zn, value:pageData.minZnPct, action:pageActions.inputMinZnPct},
     ]
     return (
       <View style={{flex:1}}>
@@ -169,9 +169,9 @@ class RegisterFoodPage extends Component {
           {this.renderCard(`Minerals (per ${pageData.unitAmount}${pageData.unit})`, Minerals, 4)}
           <View style={{height:8}}/>
         </ScrollView>
-        {/* <ActionButton style={{container:{bottom:50, backgroundColor:theme.palette.primaryColor}}} 
-        onPress={() => this.props.dictionaryActions.trigger(DictionaryActions.ADD, {name:'test4'})}
-        /> */}
+        <ActionButton style={{container:{bottom:50, backgroundColor:theme.palette.primaryColor}}} 
+          onPress={() => navigation.navigate('SEARCH_FOOD_PAGE', {setFoodId: pageActions.init})}
+        />
        </View>
     )
   }

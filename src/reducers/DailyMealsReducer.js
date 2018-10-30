@@ -1,5 +1,5 @@
 'use strict'
-import * as types from '../actions/DailyMealsActions'
+import * as Types from '../actions/DailyMealsActions'
 import DailyMealsBusiness from '../business/DailyMealsBusiness'
 
 const initialState = {
@@ -12,7 +12,7 @@ const initialState = {
 }
 
 export default function dailyMealsReducer(state = initialState, action = {}) {
-  if (action.type === types.ADD) { // x[0]:key x[1]:meal_element
+  if (action.type === Types.ADD) { // x[0]:key x[1]:meal_element
     let tmp = state.dailyMealsHistory[action.x[0]] ? [...(state.dailyMealsHistory[action.x[0]]), action.x[1]] : [action.x[1]]
     return {
       ...state,
@@ -22,7 +22,7 @@ export default function dailyMealsReducer(state = initialState, action = {}) {
       },
     }
   }
-  if (action.type === types.REMOVE) { // x[0]:key x[1]:index
+  if (action.type === Types.REMOVE) { // x[0]:key x[1]:index
     let tmp = [...(state.dailyMealsHistory[action.x[0]].slice(0, action.x[1])), ...(state.dailyMealsHistory[action.x[0]].slice(1 + action.x[1]))]
     // state.dailyMealsHistory[action.x[0]] = state.dailyMealsHistory[action.x[0]].splice(0)
     // state.dailyMealsHistory[action.x[0]].splice(action.x[1], 1)

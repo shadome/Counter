@@ -3,18 +3,18 @@ import React, {Component} from 'react'
 import {StyleSheet, View, Text, ScrollView, Modal, TouchableWithoutFeedback, Keyboard, Picker, Alert} from 'react-native'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {Toolbar, Icon, IconToggle, Card, RadioButton, Button, Dialog, withTheme, ActionButton} from '../../lib/react-native-material-ui'
-import TextField from '../../lib/react-native-material-textfield/adapted'
-import {CollapsibleCard} from '../../lib/collapsiblecard'
-import * as DictionaryActions from '../actions/DictionaryActions'
-import * as RegisterFoodActions from '../actions/RegisterFoodActions'
-import MainBottomNavigationBar from '../fragments/MainBottomNavigationBarFragment'
-import { VitaminsData, MineralsData, MacronutrientsData } from '../data/Nutrients'
-import * as FoodCategories from '../data/FoodCategories'
+import {Toolbar, Icon, IconToggle, Card, RadioButton, Button, Dialog, withTheme, ActionButton} from '../../../lib/react-native-material-ui'
+import TextField from '../../../lib/react-native-material-textfield/adapted'
+import {CollapsibleCard} from '../../../lib/collapsiblecard'
+import * as DictionaryActions from '../../actions/DictionaryActions'
+import * as RegisterFoodActions from '../../actions/RegisterFoodActions'
+import MainBottomNavigationBar from '../../fragments/MainBottomNavigationBarFragment'
+import { VitaminsData, MineralsData, MacronutrientsData } from '../../data/Nutrients'
+import * as FoodCategories from '../../data/FoodCategories'
 
 class RegisterFoodPage extends Component {
   submit() {
-    const {navigation, pageData, pageActions, dictionaryActions, dictionaryData} = this.props
+    const {navigation, pageData, pageActions, dictionaryActions} = this.props
     dictionaryActions.add({...pageData})
     pageActions.reset()
     navigation.goBack()
@@ -85,10 +85,10 @@ class RegisterFoodPage extends Component {
       {item:MacronutrientsData.ethanol, value:pageData.ethanolPct, action:pageActions.inputEthanolPct},
     ]
     const DetailedMacro = [
-      {item:MacronutrientsData.fat.saturated, value:pageData.saturatedFatPct, action:pageActions.inputFatSaturatedPct},
-      {item:MacronutrientsData.fat.monounsaturated.n9, value:pageData.n9FatPct, action:pageActions.inputFatN9Pct},
-      {item:MacronutrientsData.fat.polyunsaturated.n6, value:pageData.n6FatPct, action:pageActions.inputFatN6Pct},
-      {item:MacronutrientsData.fat.polyunsaturated.n3, value:pageData.n3FatPct, action:pageActions.inputFatN3Pct},
+      {item:MacronutrientsData.fat.saturated, value:pageData.fatSaturatedPct, action:pageActions.inputFatSaturatedPct},
+      {item:MacronutrientsData.fat.monounsaturated.n9, value:pageData.fatN9Pct, action:pageActions.inputFatN9Pct},
+      {item:MacronutrientsData.fat.polyunsaturated.n6, value:pageData.fatN6Pct, action:pageActions.inputFatN6Pct},
+      {item:MacronutrientsData.fat.polyunsaturated.n3, value:pageData.fatN3Pct, action:pageActions.inputFatN3Pct},
     ]
     const Vitamins = [
       {item:VitaminsData.C, value:pageData.vitCPct, action:pageActions.inputVitCPct},
@@ -165,8 +165,8 @@ class RegisterFoodPage extends Component {
             </View>
           )}
           {this.renderCard(`Detailed macronutrients (per ${pageData.unitAmount}${pageData.unit})`, DetailedMacro)}
-          {this.renderCard(`Vitamins (per ${pageData.unitAmount}${pageData.unit})`, Vitamins, 4)}
-          {this.renderCard(`Minerals (per ${pageData.unitAmount}${pageData.unit})`, Minerals, 4)}
+          {this.renderCard(`Vitamins (per ${pageData.unitAmount}${pageData.unit})`, Vitamins, 2)}
+          {this.renderCard(`Minerals (per ${pageData.unitAmount}${pageData.unit})`, Minerals, 2)}
           <View style={{height:8}}/>
         </ScrollView>
         <ActionButton style={{container:{bottom:50, backgroundColor:theme.palette.primaryColor}}} 
@@ -194,11 +194,9 @@ const Styles = StyleSheet.create({
 export default connect(
   state => ({
     pageData: state.registerFoodReducer,
-    // dictionaryData: state.dictionaryReducer,
   }),
   (dispatch) => ({
     pageActions: bindActionCreators(RegisterFoodActions, dispatch),
-    // dailysMealsActions: bindActionCreators(DailyMealsActions, dispatch),
-    // dictionaryActions: bindActionCreators(DictionaryActions, dispatch),
+    dictionaryActions: bindActionCreators(DictionaryActions, dispatch),
   })
 )(withTheme(RegisterFoodPage))

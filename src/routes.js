@@ -1,15 +1,12 @@
 import {createStackNavigator} from 'react-navigation'
 
-import DailyMealsPage from './pages/DailyMealsPage'
-import RegisterFoodPage from './pages/RegisterFoodPage'
-import ListDictionaryPage from './pages/ListDictionaryPage'
-import SearchFoodPage from './pages/SearchFoodPage'
+import * as Pages from './pages'
 
 const AppNavigator = createStackNavigator({
-    DAILY_MEALS_PAGE: DailyMealsPage,
-    REGISTER_FOOD_PAGE: RegisterFoodPage,
-    LIST_DICTIONARY_PAGE: ListDictionaryPage,
-    SEARCH_FOOD_PAGE: SearchFoodPage,
+    DAILY_MEALS_PAGE: Pages.DailyMealsPage,
+    REGISTER_FOOD_PAGE: Pages.RegisterFoodPage,
+    LIST_DICTIONARY_PAGE: Pages.ListDictionaryPage,
+    SEARCH_FOOD_PAGE: Pages.SearchFoodPage,
   }, {
     initialRouteName: 'DAILY_MEALS_PAGE',
     headerMode: 'none',

@@ -1,4 +1,5 @@
 ﻿'use strict'
+import {Alert} from 'react-native'
 
 export const reset = () => ({
   type: RESET,

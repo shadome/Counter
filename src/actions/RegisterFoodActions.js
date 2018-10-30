@@ -1,7 +1,7 @@
 ﻿'use strict'
 
 import * as FoodEntriesService from '../services/FoodEntriesService'
-
+// TODO use state for controls
 export const reset = () => ({
   type: RESET,
 })

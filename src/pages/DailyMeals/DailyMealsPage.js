@@ -3,10 +3,10 @@ import React, {Component} from 'react'
 import {NativeModules, StatusBar, View, ScrollView, Text, FlatList} from 'react-native'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {COLOR, ThemeProvider, ListItem, Checkbox, Button, Toolbar, Icon, ActionButton, BottomNavigation, withTheme} from '../../lib/react-native-material-ui'
-import * as DailyMealsActions from '../actions/DailyMealsActions'
-import DailyMealsBusiness from '../business/DailyMealsBusiness'
-import MainBottomNavigationBar from '../fragments/MainBottomNavigationBarFragment'
+import {COLOR, ThemeProvider, ListItem, Checkbox, Button, Toolbar, Icon, ActionButton, BottomNavigation, withTheme} from '../../../lib/react-native-material-ui'
+import * as DailyMealsActions from '../../actions/DailyMealsActions'
+import DailyMealsBusiness from '../../business/DailyMealsBusiness'
+import MainBottomNavigationBar from '../../fragments/MainBottomNavigationBarFragment'
 
 class DailyMealsPage extends Component {
   constructor(props) {

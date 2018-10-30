@@ -3,11 +3,10 @@ import React, {Component} from 'react'
 import {NativeModules, StatusBar, View, ScrollView, Text, FlatList} from 'react-native'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {COLOR, ThemeProvider, ListItem, Checkbox, Button, Toolbar, Icon, ActionButton, BottomNavigation, withTheme} from '../../lib/react-native-material-ui'
-import MainBottomNavigationBar from '../fragments/MainBottomNavigationBarFragment'
-import * as DictionaryActions from '../actions/DictionaryActions'
-
-import * as FoodEntriesServices from '../services/FoodEntriesService'
+import {COLOR, ThemeProvider, ListItem, Checkbox, Button, Toolbar, Icon, ActionButton, BottomNavigation, withTheme} from '../../../lib/react-native-material-ui'
+import MainBottomNavigationBar from '../../fragments/MainBottomNavigationBarFragment'
+import * as DictionaryActions from '../../actions/DictionaryActions'
+import * as FoodEntriesServices from '../../services/FoodEntriesService'
 
 class SearchFoodPage extends Component {
   constructor(props) {
@@ -35,7 +34,7 @@ class SearchFoodPage extends Component {
       <View style={{flex:1}}>
         <Toolbar 
           leftElement='arrow-back' 
-          onLeftElementPress={() => navigation.goBack()} 
+          onLeftElementPress={navigation.goBack} 
           isSearchActive 
           searchable={{
             placeholder:'Enter a food name...', 
@@ -55,13 +54,7 @@ class SearchFoodPage extends Component {
 
 export default connect(
   state => ({
-    // dailyMealsData: state.dailyMealsReducer,
-    // dictionaryData: state.dictionaryReducer,
-    //pageData: state.listDailyMealPageReducer,
   }),
   (dispatch) => ({
-    // dailyMealsActions: bindActionCreators(DailyMealsActions, dispatch),
-    // pageActions: bindActionCreators(ListDailyMealPageActions, dispatch),
-    // dictionaryActions: bindActionCreators(DictionaryActions, dispatch),
   })
 )(withTheme(SearchFoodPage))

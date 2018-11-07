@@ -11,12 +11,12 @@ import * as FoodEntriesServices from '../../services/FoodEntriesService'
 class SearchFoodPage extends Component {
   constructor(props) {
     super(props)
-    this.state = {list:[]}
+    this.state = {list:this.props.navigation.state.params.onSearch()}
   }
   onSearchChange = (value) => {
     this.setState({
       ...(this.state),
-      list:this.props.navigation.state.params.onSearch(value)
+      list:this.props.navigation.state.params.onSearch(value) || this.state.list
     })
   }
   goBack = (id) => {

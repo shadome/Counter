@@ -42,7 +42,7 @@ class ListDictionaryPage extends Component {
         <ActionButton style={{container:{bottom:50, backgroundColor:theme.palette.primaryColor}}} 
           onPress={() => navigation.navigate('REGISTER_FOOD_PAGE')}
         />
-        <MainBottomNavigationBar navigation={navigation} index='2'/>
+        <MainBottomNavigationBar navigation={navigation} index='1'/>
       </View>
     )
   }

@@ -16,7 +16,7 @@ import * as FoodEntriesServices from '../../services/FoodEntriesService'
 class RegisterFoodPage extends Component {
   submit() {
     const {navigation, pageData, pageActions, dictionaryActions} = this.props
-    // artificial first choice selection due to Picker not putting a default value through redux
+    // TODO artificial first choice selection due to Picker not putting a default value through redux
     dictionaryActions.add({category:pageData.category || Object.values(FoodCategories)[0], ...pageData})
     pageActions.reset()
     navigation.goBack()

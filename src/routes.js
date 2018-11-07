@@ -1,4 +1,5 @@
 import {createStackNavigator} from 'react-navigation'
+import StackViewStyleInterpolator from 'react-navigation/src/views/StackView/StackViewStyleInterpolator'
 
 import * as Pages from './pages'
 
@@ -10,6 +11,7 @@ const AppNavigator = createStackNavigator({
   }, {
     initialRouteName: 'DAILY_MEALS_PAGE',
     headerMode: 'none',
+    transitionConfig: () => { return {screenInterpolator: StackViewStyleInterpolator.forHorizontal} },
   })
 
 export default AppNavigator

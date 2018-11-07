@@ -4,7 +4,9 @@ import { FoodEntriesEn } from '../data/FoodEntriesEn'
 export function searchEntries(string = '') {
   let s = string.trim().toLowerCase()
   if (s === '')
-    return []
+    return FoodEntriesEn.map((item) => {return {...item, id:item.alim_code, name:item.alim_nom_eng}})
+  if (s.length < 3)
+    return undefined
   return FoodEntriesEn
     .reduce(function (filtered, entry) {
       if (entry.alim_nom_eng.toLowerCase().includes(s)) {

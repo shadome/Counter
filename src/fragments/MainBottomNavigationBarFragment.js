@@ -17,15 +17,15 @@ class MainBottomNavigationBarFragment extends Component {
           onPress={index !== '0' ? () => navigation.navigate('DAILY_MEALS_PAGE') : undefined}
           icon='event-available'
         />
-        <BottomNavigation.Action key='1' label='Register food' 
+        {/* <BottomNavigation.Action key='1' label='Register food' 
           onPress={index !== '1' ? () => navigation.navigate('REGISTER_FOOD_PAGE') : undefined}
           icon='create'
-        />
-        <BottomNavigation.Action key='2' label='Dictionary' 
+        /> */}
+        <BottomNavigation.Action key='1' label='Dictionary' 
           onPress={index !== '2' ? () => navigation.navigate('LIST_DICTIONARY_PAGE') : undefined}
           iconSet='FontAwesome' icon='book'
         />
-        <BottomNavigation.Action key='3' label='Calendar'
+        <BottomNavigation.Action key='2' label='Calendar'
           onPress={() => null}
           icon='event-note'
         />

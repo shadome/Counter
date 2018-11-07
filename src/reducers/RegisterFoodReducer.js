@@ -1,6 +1,7 @@
 ﻿'use strict'
 import * as types from '../actions/RegisterFoodActions'
-// import * as FoodCategories from '../data/FoodCategories'
+import * as FoodCategories from '../data/FoodCategories'
+
 const initialState = {
   unit: 'g',
   unitAmount: 100,

@@ -11,11 +11,13 @@ import * as RegisterFoodActions from '../../actions/RegisterFoodActions'
 import MainBottomNavigationBar from '../../fragments/MainBottomNavigationBarFragment'
 import { VitaminsData, MineralsData, MacronutrientsData } from '../../data/Nutrients'
 import * as FoodCategories from '../../data/FoodCategories'
+import * as FoodEntriesServices from '../../services/FoodEntriesService'
 
 class RegisterFoodPage extends Component {
   submit() {
     const {navigation, pageData, pageActions, dictionaryActions} = this.props
-    dictionaryActions.add({...pageData})
+    // artificial first choice selection due to Picker not putting a default value through redux
+    dictionaryActions.add({category:pageData.category || Object.values(FoodCategories)[0], ...pageData})
     pageActions.reset()
     navigation.goBack()
   }
@@ -145,6 +147,13 @@ class RegisterFoodPage extends Component {
             />
             <View style={Styles.row}>
               {this.renderPicker()}
+              <View style={Styles.space}/>
+              <View style={{flex:1}}>
+                <Button primary raised 
+                  text='Search' 
+                  onPress={() => navigation.navigate('SEARCH_FOOD_PAGE', {onReturn:pageActions.init, onSearch:FoodEntriesServices.searchEntries})}
+                />
+              </View>
             </View>
           </CollapsibleCard>
           {this.renderCard(`Macronutrients (per ${pageData.unitAmount}${pageData.unit})`, Macronutrients, 2, 
@@ -169,9 +178,6 @@ class RegisterFoodPage extends Component {
           {this.renderCard(`Minerals (per ${pageData.unitAmount}${pageData.unit})`, Minerals, 2)}
           <View style={{height:8}}/>
         </ScrollView>
-        <ActionButton style={{container:{bottom:50, backgroundColor:theme.palette.primaryColor}}} 
-          onPress={() => navigation.navigate('SEARCH_FOOD_PAGE', {setFoodId: pageActions.init})}
-        />
        </View>
     )
   }
@@ -185,7 +191,7 @@ const Styles = StyleSheet.create({
     paddingTop:8,
   }, row: {
     flexDirection:'row', 
-    alignItems:'baseline',
+    alignItems:'center',
   }, space: {
     width:16,
   }

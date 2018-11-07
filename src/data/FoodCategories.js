@@ -10,7 +10,7 @@ export const VEGETABLES = {
 }
 export const LEGUMES = {
     name:'legumes',
-    icon:'',
+    icon:'carrot',
     iconSet:'',
 }
 export const NUTS = {

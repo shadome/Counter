@@ -5,12 +5,14 @@ export function searchEntries(string = '') {
   let s = string.trim().toLowerCase()
   if (s === '')
     return []
-  return FoodEntriesEn.reduce(function (filtered, entry) {
-    if (entry.alim_nom_eng.toLowerCase().includes(s)) {
-      filtered.push({id: entry.alim_code, name: entry.alim_nom_eng})
-    }
-    return filtered
-  }, [])
+  return FoodEntriesEn
+    .reduce(function (filtered, entry) {
+      if (entry.alim_nom_eng.toLowerCase().includes(s)) {
+        filtered.push({id:entry.alim_code, name:entry.alim_nom_eng})
+      }
+      return filtered
+    }, [])
+    .sort(function(a, b) {return a.name.length - b.name.length})
 }
 
 export function getEntry(id) {

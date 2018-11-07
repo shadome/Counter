@@ -18,7 +18,7 @@ class ListDictionaryPage extends Component {
       <ListItem divider 
         onLongPress={() => dictionaryActions.remove(item.name)}
         centerElement={{primaryText:item.name}}
-        leftElement={item.category && <FoodCategoryIcon name={item.category.icon}/>}
+        leftElement={item.category && <FoodCategoryIcon name={item.category.icon} size={30}/>}
       />
     return (
       <View style={{flex:1}}>
@@ -26,7 +26,7 @@ class ListDictionaryPage extends Component {
         {list.length < 1 ? 
           <View style={{flex:1, justifyContent:'center', alignItems:'center',}}>
             <View style={{backgroundColor:'#cccccc', height:150, width:150, borderRadius:150, alignItems:'center', justifyContent:'center'}}>
-              <Icon iconSet='FontAwesome' name='ellipsis-h' style={{marginTop:30, fontSize:100}}/>
+              <Icon iconSet='FontAwesome' name='ellipsis-h' size={100} style={{marginTop:30}}/>
             </View>
           </View>  
         :
@@ -40,7 +40,7 @@ class ListDictionaryPage extends Component {
             </ScrollView>
         }
         <ActionButton style={{container:{bottom:50, backgroundColor:theme.palette.primaryColor}}} 
-          onPress={() => navigation.navigate('SEARCH_FOOD_PAGE')}
+          onPress={() => navigation.navigate('REGISTER_FOOD_PAGE')}
         />
         <MainBottomNavigationBar navigation={navigation} index='2'/>
       </View>

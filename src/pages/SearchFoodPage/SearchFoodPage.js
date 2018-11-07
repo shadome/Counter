@@ -15,18 +15,18 @@ class SearchFoodPage extends Component {
   }
   onSearchChange = (value) => {
     this.setState({
-      ...(this.state), 
-      list:FoodEntriesServices.searchEntries(value)
+      ...(this.state),
+      list:this.props.navigation.state.params.onSearch(value)
     })
   }
   goBack = (id) => {
-    this.props.navigation.state.params.setFoodId(id)
+    this.props.navigation.state.params.onReturn(id)
     this.props.navigation.goBack()
   }
   render() {
     const {navigation, } = this.props
     const listItem = (item, index) => 
-      <ListItem divider dense 
+      <ListItem divider 
         centerElement={{primaryText:item.name}} 
         onPress={() => this.goBack(item.id)}
       />
